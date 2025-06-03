@@ -11,10 +11,16 @@ document.addEventListener('DOMContentLoaded', function() {
     };
     
     // アニメーション要素の監視
+    // アニメーション要素の監視
     const animationObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('animate-in');
+                const animationType = entry.target.dataset.animation;
+                if (animationType) {
+                    entry.target.classList.add(`animate-${animationType}`);
+                } else {
+                    entry.target.classList.add('animate-fadeInUp'); // Default animation
+                }
                 // 一度アニメーションしたら監視を停止
                 animationObserver.unobserve(entry.target);
             }
@@ -331,14 +337,21 @@ document.addEventListener('DOMContentLoaded', function() {
     const animationStyles = document.createElement('style');
     animationStyles.textContent = `
         .animate-element {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0; /* Initial state for all animated elements */
         }
-        
-        .animate-element.animate-in {
-            opacity: 1;
-            transform: translateY(0);
+
+        /* Specific animation classes */
+        .animate-fadeInUp {
+            animation: fadeInUp var(--animation-duration-normal, 0.5s) ease-in-out forwards;
+        }
+        .animate-slideInLeft {
+            animation: slideInLeft var(--animation-duration-normal, 0.5s) ease-in-out forwards;
+        }
+        .animate-slideInRight {
+            animation: slideInRight var(--animation-duration-normal, 0.5s) ease-in-out forwards;
+        }
+        .animate-scaleIn {
+            animation: scaleIn var(--animation-duration-normal, 0.5s) ease-in-out forwards;
         }
         
         @keyframes ripple {
@@ -360,44 +373,44 @@ document.addEventListener('DOMContentLoaded', function() {
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(30px);
+                transform: translateY(20px); /* Refined distance */
             }
             to {
                 opacity: 1;
-                transform: translateY(0);
+                transform: none; /* Final state */
             }
         }
         
         @keyframes slideInLeft {
             from {
                 opacity: 0;
-                transform: translateX(-30px);
+                transform: translateX(-20px); /* Refined distance */
             }
             to {
                 opacity: 1;
-                transform: translateX(0);
+                transform: none; /* Final state */
             }
         }
         
         @keyframes slideInRight {
             from {
                 opacity: 0;
-                transform: translateX(30px);
+                transform: translateX(20px); /* Refined distance */
             }
             to {
                 opacity: 1;
-                transform: translateX(0);
+                transform: none; /* Final state */
             }
         }
         
         @keyframes scaleIn {
             from {
                 opacity: 0;
-                transform: scale(0.8);
+                transform: scale(0.9); /* Refined scale */
             }
             to {
                 opacity: 1;
-                transform: scale(1);
+                transform: scale(1); /* Final state for scale */
             }
         }
         

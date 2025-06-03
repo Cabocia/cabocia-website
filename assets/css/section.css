@@ -1,48 +1,34 @@
 /* FAQセクション */
+/* Applied variables to background, shadows, and colors. Ensured consistency with variable names. */
+/* Assumes .section-divider-top is applied to the section element in HTML for the top border */
 .faq {
-  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
-  position: relative;
+  background: var(--color-bg-secondary);
+  position: relative; /* Required for .section-divider-top */
 }
 
-.faq::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--color-gray-300), transparent);
-}
+/* .faq::before (gradient top border) removed; apply .section-divider-top to parent HTML element. */
 
 .faq__content {
   max-width: 900px;
   margin: 0 auto;
 }
 
+/* Assumes HTML structure: <div class="card faq-item"> */
+/* Base styles (background, border-radius, box-shadow, overflow, transition, border) inherited from .card */
 .faq-item {
-  background: var(--color-white);
-  border-radius: var(--border-radius-xl);
   margin-bottom: var(--spacing-lg);
-  box-shadow: 
-    0 4px 15px rgba(0, 0, 0, 0.08),
-    0 2px 6px rgba(0, 0, 0, 0.05);
-  overflow: hidden;
-  transition: all var(--transition-normal);
-  border: 1px solid var(--color-gray-200);
+  /* Specific padding is on child elements, not the card itself. */
 }
 
 .faq-item:hover {
-  box-shadow: 
-    0 8px 25px rgba(0, 0, 0, 0.12),
-    0 4px 10px rgba(0, 0, 0, 0.08);
-  transform: translateY(-2px);
+  /* box-shadow and border-color inherited from .card:hover */
+  transform: translateY(-2px); /* Overrides .card default hover transform if needed */
 }
 
 .faq-item--open {
-  border-color: var(--color-primary-light);
-  box-shadow: 
-    0 8px 25px rgba(255, 140, 0, 0.15),
-    0 4px 10px rgba(255, 140, 0, 0.1);
+  border-color: var(--color-primary-light); /* This remains as it's a specific state */
+  /* Updated box-shadow to use rgba values derived from --color-primary */
+  box-shadow: 0 8px 25px rgba(255, 140, 0, 0.15), 0 4px 10px rgba(255, 140, 0, 0.1);
 }
 
 .faq-item__question {
@@ -78,7 +64,7 @@
 }
 
 .faq-item__question:hover {
-  background: linear-gradient(135deg, var(--color-gray-50), rgba(255, 255, 255, 0.8));
+  background: var(--color-gray-100);
 }
 
 .faq-item--open .faq-item__question {
@@ -89,8 +75,8 @@
   font-size: var(--font-size-xl);
   color: var(--color-primary);
   transition: all var(--transition-fast);
-  width: 32px;
-  height: 32px;
+  width: var(--spacing-2xl);
+  height: var(--spacing-2xl);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -126,20 +112,13 @@
 }
 
 /* お問い合わせセクション */
+/* Assumes .section-divider-top is applied to the section element in HTML for the top border */
 .contact {
   background: var(--color-bg-primary);
-  position: relative;
+  position: relative; /* Required for .section-divider-top */
 }
 
-.contact::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--color-gray-300), transparent);
-}
+/* .contact::before (gradient top border) removed; apply .section-divider-top to parent HTML element. */
 
 .contact__content {
   display: grid;
@@ -157,16 +136,14 @@
 }
 
 /* フォームスタイル */
+/* Assumes HTML: <form class="card contact-form"> */
+/* Base styles from .card. Specific padding and border-radius are kept. */
 .contact-form {
-  background: var(--color-white);
-  border-radius: var(--border-radius-2xl);
-  padding: var(--spacing-3xl);
-  box-shadow: 
-    0 15px 30px rgba(0, 0, 0, 0.1),
-    0 6px 12px rgba(0, 0, 0, 0.05);
-  border: 1px solid var(--color-gray-200);
-  position: relative;
-  overflow: hidden;
+  /* background-color, box-shadow (using .card's default var(--shadow-md) unless overridden by stronger specificity if .card.contact-form is used), border, overflow inherited from .card */
+  border-radius: var(--border-radius-2xl); /* Overrides .card default if different */
+  padding: var(--spacing-3xl); /* Overrides .card default padding. Consider .card--spacious-padding if this value is var(--spacing-2xl) */
+  box-shadow: var(--shadow-xl); /* Explicitly keep this stronger shadow */
+  position: relative; /* Keep for ::before */
 }
 
 .contact-form::before {
@@ -216,10 +193,10 @@
   border: 2px solid var(--color-gray-300);
   border-radius: var(--border-radius-lg);
   font-size: var(--font-size-base);
-  font-family: inherit;
-  background: var(--color-white);
+  font-family: var(--font-family-primary);
+  background: var(--color-bg-primary);
   transition: all var(--transition-fast);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  box-shadow: var(--shadow-inner);
 }
 
 .form-input:focus,
@@ -227,10 +204,8 @@
 .form-textarea:focus {
   outline: none;
   border-color: var(--color-primary);
-  box-shadow: 
-    0 0 0 3px rgba(255, 140, 0, 0.1),
-    0 4px 12px rgba(0, 0, 0, 0.1);
-  background: rgba(255, 140, 0, 0.02);
+  box-shadow: var(--focus-ring), var(--shadow-md);
+  background: var(--color-white);
 }
 
 .form-input:hover:not(:focus),
@@ -256,7 +231,7 @@
 }
 
 .form-checkbox:hover {
-  background: var(--color-gray-50);
+  background: var(--color-gray-100);
 }
 
 .form-checkbox input[type="checkbox"] {
@@ -271,13 +246,18 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all var(--/* システム構成図セクション */
+  transition: all var(--transition-fast);
+}
+
+/* システム構成図セクション */
+/* Consolidated styles for .system-architecture; removed subsequent duplicate declaration. */
 .system-architecture {
-  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+  background: linear-gradient(135deg, var(--color-bg-secondary) 0%, var(--color-white) 100%);
   position: relative;
   overflow: hidden;
 }
 
+/* Applied RGBA colors derived from variables */
 .system-architecture::before {
   content: '';
   position: absolute;
@@ -286,8 +266,8 @@
   width: 200%;
   height: 200%;
   background: 
-    radial-gradient(circle at 30% 30%, rgba(255, 140, 0, 0.03) 0%, transparent 50%),
-    radial-gradient(circle at 70% 70%, rgba(255, 107, 53, 0.03) 0%, transparent 50%);
+    radial-gradient(circle at 30% 30%, rgba(255, 140, 0, 0.03) 0%, transparent 50%), /* rgba from --color-primary */
+    radial-gradient(circle at 70% 70%, rgba(255, 107, 53, 0.03) 0%, transparent 50%); /* rgba from --color-accent */
   animation: backgroundMove 20s ease-in-out infinite;
 }
 
@@ -298,7 +278,7 @@
 }
 
 .architecture__diagram {
-  text-align: center;
+  /* text-align: center; -> Apply .text-center utility class in HTML */
   margin-bottom: var(--spacing-5xl);
   position: relative;
   z-index: 1;
@@ -308,11 +288,9 @@
   max-width: 100%;
   height: auto;
   border-radius: var(--border-radius-2xl);
-  box-shadow: 
-    0 20px 40px rgba(0, 0, 0, 0.1),
-    0 10px 20px rgba(0, 0, 0, 0.05);
+  box-shadow: var(--shadow-xl);
   transition: transform var(--transition-slow);
-  background: linear-gradient(45deg, #f0f0f0, #e0e0e0);
+  background: linear-gradient(45deg, var(--color-gray-100) 0%, var(--color-gray-200) 100%);
   min-height: 400px;
   display: flex;
   align-items: center;
@@ -325,10 +303,11 @@
   transform: translateY(-5px);
 }
 
+/* Consider using a .subsection-title component from components.css */
 .architecture__subtitle {
   font-size: var(--font-size-2xl);
   font-weight: var(--font-weight-semibold);
-  text-align: center;
+  /* text-align: center; -> Apply .text-center utility class in HTML */
   margin-bottom: var(--spacing-lg);
   color: var(--color-text-primary);
   position: relative;
@@ -342,7 +321,8 @@
 }
 
 .architecture__note {
-  text-align: center;
+  /* text-align: center; -> Apply .text-center utility class in HTML */
+  /* This is similar to .section-description in components.css */
   color: var(--color-text-secondary);
   margin-bottom: var(--spacing-3xl);
   font-size: var(--font-size-lg);
@@ -353,6 +333,8 @@
   z-index: 1;
 }
 
+/* Assumes HTML: <div class="card card--spacious-padding integration-logos"> */
+/* Base styles from .card. Specific padding, border-radius, and layout kept. */
 .integration-logos {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
@@ -361,10 +343,12 @@
   justify-items: center;
   position: relative;
   z-index: 1;
-  padding: var(--spacing-2xl);
-  background: var(--color-white);
-  border-radius: var(--border-radius-2xl);
-  box-shadow: var(--shadow-lg);
+  /* background-color, box-shadow from .card */
+  /* padding from .card--spacious-padding (var(--spacing-2xl)) */
+  border-radius: var(--border-radius-2xl); /* Overrides .card default */
+  /* Explicit background and shadow if .card is not applied in HTML */
+  /* background: var(--color-white); */
+  /* box-shadow: var(--shadow-lg); */
 }
 
 @media (max-width: 768px) {
@@ -377,10 +361,14 @@
 @media (max-width: 480px) {
   .integration-logos {
     grid-template-columns: repeat(3, 1fr);
-    gap: var(--/* テスター募集セクション */
+    gap: var(--spacing-xs);
+  }
+}
+
+/* テスター募集セクション */
 .tester-recruitment {
   background: var(--gradient-primary);
-  color: var(--color-white);
+  color: var(--color-text-inverse);
 }
 
 .tester__content {
@@ -402,18 +390,18 @@
   gap: var(--spacing-xl);
 }
 
+/* Assumes HTML structure: <div class="card benefit-card text-center"> or <div class="card card--text-center benefit-card"> */
+/* Padding is var(--spacing-xl), matching default .card */
 .benefit-card {
   background-color: rgba(255, 255, 255, 0.1);
-  border-radius: var(--border-radius-xl);
-  padding: var(--spacing-xl);
-  text-align: center;
-  backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.2);
-  transition: all var(--transition-normal);
+  backdrop-filter: blur(10px);
+  /* text-align from .text-center or .card--text-center utility */
+  /* border-radius, padding, transition from .card */
 }
 
 .benefit-card:hover {
-  transform: translateY(-4px);
+  /* transform from .card:hover, border-color from .card:hover (if applicable, current border is rgba) */
   background-color: rgba(255, 255, 255, 0.15);
 }
 
@@ -433,10 +421,11 @@
   opacity: 0.9;
 }
 
+/* Consider using a .subsection-title component */
 .tester__flow-title {
   font-size: var(--font-size-2xl);
   font-weight: var(--font-weight-semibold);
-  text-align: center;
+  /* text-align: center; -> Apply .text-center utility class in HTML */
   margin-bottom: var(--spacing-2xl);
 }
 
@@ -451,7 +440,8 @@
 }
 
 .vision__description {
-  text-align: center;
+  /* text-align: center; -> Apply .text-center utility class in HTML */
+  /* Similar to .section-description */
   margin-bottom: var(--spacing-4xl);
 }
 
@@ -462,10 +452,11 @@
   margin-bottom: var(--spacing-lg);
 }
 
+/* Consider using a .subsection-title component */
 .vision__subtitle {
   font-size: var(--font-size-2xl);
   font-weight: var(--font-weight-semibold);
-  text-align: center;
+  /* text-align: center; -> Apply .text-center utility class in HTML */
   margin-bottom: var(--spacing-xl);
   color: var(--color-text-primary);
 }
@@ -482,19 +473,14 @@
   }
 }
 
+/* Assumes HTML: <div class="card future-feature text-center"> or <div class="card card--text-center future-feature"> */
+/* Padding var(--spacing-xl) matches .card default. */
 .future-feature {
-  background-color: var(--color-white);
-  border-radius: var(--border-radius-xl);
-  padding: var(--spacing-xl);
-  text-align: center;
-  box-shadow: var(--shadow-md);
-  transition: all var(--transition-normal);
+  /* All key properties can be inherited from .card and .text-center or .card--text-center */
+  /* text-align: center; -> Handled by utility class */
 }
 
-.future-feature:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-lg);
-}
+/* Hover styles inherited from .card:hover */
 
 .future-feature__icon {
   font-size: var(--font-size-4xl);
@@ -531,10 +517,11 @@
   margin-bottom: var(--spacing-4xl);
 }
 
+/* Consider using a .subsection-title component */
 .story-section__title {
   font-size: var(--font-size-2xl);
   font-weight: var(--font-weight-semibold);
-  text-align: center;
+  /* text-align: center; -> Apply .text-center utility class in HTML */
   margin-bottom: var(--spacing-xl);
   color: var(--color-text-primary);
 }
@@ -549,12 +536,12 @@
   line-height: var(--line-height-relaxed);
   color: var(--color-text-secondary);
   margin-bottom: var(--spacing-lg);
-  text-align: center;
+  /* text-align: center; -> Apply .text-center utility class in HTML */
 }
 
 .story-highlight {
   font-size: var(--font-size-xl);
-  text-align: center;
+  /* text-align: center; -> Apply .text-center utility class in HTML */
   background: var(--gradient-primary);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -574,19 +561,18 @@
   }
 }
 
+/* Assumes HTML: <div class="card card--spacious-padding card--text-center mv-item"> */
 .mv-item {
-  background-color: var(--color-white);
-  border-radius: var(--border-radius-xl);
-  padding: var(--spacing-2xl);
-  text-align: center;
-  box-shadow: var(--shadow-md);
-  border: 2px solid var(--color-gray-200);
-  transition: all var(--transition-normal);
+  /* background-color, border-radius, box-shadow, transition from .card */
+  /* padding from .card--spacious-padding */
+  /* text-align from .card--text-center */
+  border: 2px solid var(--color-gray-200); /* Override .card border */
 }
 
 .mv-item:hover {
+  /* .card:hover provides box-shadow. Border color needs to be var(--color-primary) */
   border-color: var(--color-primary);
-  transform: translateY(-2px);
+  transform: translateY(-2px); /* Custom hover transform */
 }
 
 .mv-item__label {
@@ -604,10 +590,11 @@
   line-height: var(--line-height-relaxed);
 }
 
+/* Consider using a .subsection-title component */
 .company__team-title {
   font-size: var(--font-size-2xl);
   font-weight: var(--font-weight-semibold);
-  text-align: center;
+  /* text-align: center; -> Apply .text-center utility class in HTML */
   margin-bottom: var(--spacing-xl);
   color: var(--color-text-primary);
 }
@@ -625,19 +612,14 @@
   }
 }
 
+/* Assumes HTML: <div class="card card--spacious-padding card--text-center team-member"> */
 .team-member {
-  background-color: var(--color-white);
-  border-radius: var(--border-radius-xl);
-  padding: var(--spacing-2xl);
-  text-align: center;
-  box-shadow: var(--shadow-md);
-  transition: all var(--transition-normal);
+  /* background-color, border-radius, box-shadow, transition from .card */
+  /* padding from .card--spacious-padding */
+  /* text-align from .card--text-center */
 }
 
-.team-member:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-lg);
-}
+/* Hover styles inherited from .card:hover (transform: translateY(-4px); box-shadow: var(--card-shadow-hover);) */
 
 .team-member__photo {
   margin-bottom: var(--spacing-lg);
@@ -657,7 +639,7 @@
   font-weight: var(--font-weight-bold);
   color: var(--color-primary);
   margin-bottom: var(--spacing-xs);
-  letter-spacing: 0.05em);
+  letter-spacing: 0.05em;
 }
 
 .team-member__name {
@@ -672,10 +654,11 @@
   line-height: var(--line-height-relaxed);
 }
 
+/* Consider using a .subsection-title component */
 .company__values-title {
   font-size: var(--font-size-2xl);
   font-weight: var(--font-weight-semibold);
-  text-align: center;
+  /* text-align: center; -> Apply .text-center utility class in HTML */
   margin-bottom: var(--spacing-xl);
   color: var(--color-text-primary);
 }
@@ -725,236 +708,13 @@
   font-size: var(--font-size-sm);
 }
 
-/* FAQセクション */
-.faq {
-  background-color: var(--color-bg-secondary);
-}
-
-.faq__content {
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.faq-item {
-  background-color: var(--color-white);
-  border-radius: var(--border-radius-lg);
-  margin-bottom: var(--spacing-md);
-  box-shadow: var(--shadow-sm);
-  overflow: hidden;
-  transition: all var(--transition-normal);
-}
-
-.faq-item:hover {
-  box-shadow: var(--shadow-md);
-}
-
-.faq-item__question {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: var(--spacing-lg) var(--spacing-xl);
-  background: none;
-  border: none;
-  text-align: left;
-  cursor: pointer;
-  font-size: var(--font-size-lg);
-  font-weight: var(--font-weight-medium);
-  color: var(--color-text-primary);
-  transition: background-color var(--transition-fast);
-}
-
-.faq-item__question:hover {
-  background-color: var(--color-gray-50);
-}
-
-.faq-item__icon {
-  font-size: var(--font-size-xl);
-  color: var(--color-primary);
-  transition: transform var(--transition-fast);
-}
-
-.faq-item--open .faq-item__icon {
-  transform: rotate(45deg);
-}
-
-.faq-item__answer {
-  padding: 0 var(--spacing-xl) var(--spacing-lg);
-  color: var(--color-text-secondary);
-  line-height: var(--line-height-relaxed);
-  max-height: 0;
-  overflow: hidden;
-  transition: all var(--transition-normal);
-}
-
-.faq-item--open .faq-item__answer {
-  max-height: 200px;
-  padding-top: 0;
-}
-
-/* お問い合わせセクション */
-.contact {
-  background-color: var(--color-bg-primary);
-}
-
-.contact__content {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--spacing-4xl);
-  max-width: 1000px;
-  margin: 0 auto;
-}
-
-@media (min-width: 1024px) {
-  .contact__content {
-    grid-template-columns: 2fr 1fr;
-  }
-}
-
-/* フォームスタイル */
-.contact-form {
-  background-color: var(--color-white);
-  border-radius: var(--border-radius-xl);
-  padding: var(--spacing-2xl);
-  box-shadow: var(--shadow-lg);
-}
-
-.form-group {
-  margin-bottom: var(--spacing-lg);
-}
-
-.form-row {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--spacing-lg);
-}
-
-@media (min-width: 640px) {
-  .form-row {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-.form-label {
-  display: block;
-  font-weight: var(--font-weight-medium);
-  color: var(--color-text-primary);
-  margin-bottom: var(--spacing-sm);
-}
-
-.required {
-  color: var(--color-error);
-}
-
-.form-input,
-.form-select,
-.form-textarea {
-  width: 100%;
-  padding: var(--spacing-md);
-  border: 2px solid var(--color-gray-300);
-  border-radius: var(--border-radius-lg);
-  font-size: var(--font-size-base);
-  transition: border-color var(--transition-fast);
-}
-
-.form-input:focus,
-.form-select:focus,
-.form-textarea:focus {
-  outline: none;
-  border-color: var(--color-primary);
-  box-shadow: 0 0 0 3px rgba(255, 140, 0, 0.1);
-}
-
-.form-textarea {
-  resize: vertical;
-  min-height: 100px;
-}
-
-.form-checkbox {
-  display: flex;
-  align-items: flex-start;
-  gap: var(--spacing-sm);
-  cursor: pointer;
-}
-
-.form-checkbox input[type="checkbox"] {
-  display: none;
-}
-
-.form-checkbox__checkmark {
-  width: 20px;
-  height: 20px;
-  border: 2px solid var(--color-gray-300);
-  border-radius: var(--border-radius-sm);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all var(--transition-fast);
-  flex-shrink: 0;
-  margin-top: 2px;
-}
-
-.form-checkbox input[type="checkbox"]:checked + .form-checkbox__checkmark {
-  background: var(--gradient-primary);
-  border-color: var(--color-primary);
-}
-
-.form-checkbox input[type="checkbox"]:checked + .form-checkbox__checkmark::after {
-  content: '✓';
-  color: var(--color-white);
-  font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-bold);
-}
-
-.form-checkbox__text {
-  line-height: var(--line-height-relaxed);
-  color: var(--color-text-secondary);
-}
-
-.form-checkbox__text a {
-  color: var(--color-primary);
-  text-decoration: underline;
-}
-
-.form-actions {
-  margin-top: var(--spacing-xl);
-  text-align: center;
-}
-
-.contact__info {
-  display: flex;
-  align-items: flex-start;
-}
-
-.contact-info {
-  background-color: var(--color-white);
-  border-radius: var(--border-radius-xl);
-  padding: var(--spacing-2xl);
-  box-shadow: var(--shadow-md);
-  width: 100%;
-}
-
-.contact-info__title {
-  font-size: var(--font-size-xl);
-  font-weight: var(--font-weight-semibold);
-  color: var(--color-text-primary);
-  margin-bottom: var(--spacing-lg);
-}
-
-.contact-info__item {
-  margin-bottom: var(--spacing-md);
-  color: var(--color-text-secondary);
-  line-height: var(--line-height-relaxed);
-}
-
-.contact-info__item strong {
-  color: var(--color-text-primary);
-}
+/* Removed duplicated .faq and .contact blocks as their primary definitions at the top, combined with component classes, should cover their intent. */
+/* The .footer block below is the primary one being used. */
 
 /* フッター */
 .footer {
   background: var(--gradient-dark);
-  color: var(--color-white);
+  color: var(--color-text-inverse);
   padding: var(--spacing-5xl) 0 var(--spacing-xl);
 }
 
@@ -1005,7 +765,7 @@
   font-size: var(--font-size-lg);
   font-weight: var(--font-weight-semibold);
   margin-bottom: var(--spacing-lg);
-  color: var(--color-white);
+  color: var(--color-white); /* Explicit white, not text-inverse, for contrast on dark gradient */
 }
 
 .footer__list {
@@ -1035,1142 +795,14 @@
 .footer__copyright {
   color: rgba(255, 255, 255, 0.6);
   font-size: var(--font-size-sm);
-}/* ===== Section Styles ===== */
-
-/* 共通セクションスタイル */
-section {
-  padding: 80px 0;
-}
-
-@media (min-width: 768px) {
-  section {
-    padding: 120px 0;
-  }
-}
-
-/* ヘッダー */
-.header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  background-color: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  z-index: var(--z-index-fixed);
-  transition: all var(--transition-normal);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-}
-
-.header.scrolled {
-  background-color: rgba(255, 255, 255, 0.98);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-}
-
-.nav {
-  padding: 16px 0;
-}
-
-.nav__container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  max-width: var(--container-xl);
-  margin: 0 auto;
-  padding: 0 var(--spacing-lg);
-}
-
-@media (min-width: 1024px) {
-  .nav__container {
-    padding: 0 var(--spacing-2xl);
-  }
-}
-
-.nav__logo {
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-}
-
-.nav__logo-img {
-  height: 42px;
-  width: auto;
-  transition: transform var(--transition-fast);
-}
-
-.nav__logo:hover .nav__logo-img {
-  transform: scale(1.05);
-}
-
-.nav__menu {
-  display: none;
-  align-items: center;
-  gap: var(--spacing-2xl);
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-@media (min-width: 768px) {
-  .nav__menu {
-    display: flex;
-  }
-}
-
-.nav__item {
-  position: relative;
-}
-
-.nav__link {
-  color: var(--color-text-primary);
-  font-weight: var(--font-weight-medium);
-  font-size: var(--font-size-base);
-  text-decoration: none;
-  padding: var(--spacing-sm) 0;
-  transition: all var(--transition-fast);
-  position: relative;
-  display: block;
-}
-
-.nav__link:hover {
-  color: var(--color-primary);
-}
-
-.nav__link::after {
-  content: '';
-  position: absolute;
-  bottom: -2px;
-  left: 50%;
-  width: 0;
-  height: 2px;
-  background: var(--gradient-primary);
-  transition: all var(--transition-fast);
-  transform: translateX(-50%);
-}
-
-.nav__link:hover::after {
-  width: 100%;
-}
-
-.nav__actions {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-md);
-}
-
-@media (max-width: 767px) {
-  .nav__actions .btn--small {
-    padding: var(--spacing-xs) var(--spacing-sm);
-    font-size: var(--font-size-xs);
-  }
-}
-
-.nav__mobile-toggle {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  padding: var(--spacing-sm);
-  background: none;
-  border: none;
-  cursor: pointer;
-  z-index: var(--z-index-modal);
-}
-
-@media (min-width: 768px) {
-  .nav__mobile-toggle {
-    display: none;
-  }
-}
-
-.nav__mobile-toggle span {
-  width: 24px;
-  height: 2px;
-  background-color: var(--color-text-primary);
-  transition: all var(--transition-fast);
-  border-radius: 1px;
-}
-
-.nav__mobile-toggle.active span:nth-child(1) {
-  transform: rotate(45deg) translate(6px, 6px);
-}
-
-.nav__mobile-toggle.active span:nth-child(2) {
-  opacity: 0;
-}
-
-/* モバイルメニュー */
-@media (max-width: 767px) {
-  .nav__menu {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: var(--color-white);
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: var(--spacing-4xl) var(--spacing-lg);
-    transform: translateX(-100%);
-    opacity: 0;
-    visibility: hidden;
-    transition: all var(--transition-normal);
-    z-index: var(--z-index-modal-backdrop);
-    box-shadow: 0 0 50px rgba(0, 0, 0, 0.3);
-  }
-  
-  .nav__menu--open {
-    transform: translateX(0);
-    opacity: 1;
-    visibility: visible;
-  }
-  
-  .nav__item {
-    margin-bottom: var(--spacing-lg);
-    text-align: center;
-  }
-  
-  .nav__link {
-    font-size: var(--font-size-xl);
-    padding: var(--spacing-lg);
-    border-radius: var(--border-radius-lg);
-    transition: all var(--transition-fast);
-  }
-  
-  .nav__link:hover {
-    background-color: var(--color-gray-50);
-    color: var(--color-primary);
-  }
-  
-  .nav__actions {
-    flex-direction: column;
-    gap: var(--spacing-md);
-    margin-top: var(--spacing-2xl);
-    width: 100%;
-  }
-  
-  .nav__actions .btn {
-    width: 100%;
-    justify-content: center;
-    padding: var(--spacing-md) var(--spacing-xl);
-  }
-}
-
-/* メインコンテンツ */
-.main {
-  margin-top: 82px; /* ヘッダーの高さ分 + 余白 */
-}
-
-/* ヒーローセクション */
-.hero {
-  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
-  color: var(--color-white);
-  position: relative;
-  overflow: hidden;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  padding: 120px 0 80px;
-}
-
-.hero::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: 
-    radial-gradient(circle at 20% 20%, rgba(255, 140, 0, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 80% 30%, rgba(255, 107, 53, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 40% 70%, rgba(255, 140, 0, 0.05) 0%, transparent 50%);
-  opacity: 0.8;
-}
-
-.hero__container {
-  position: relative;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--spacing-5xl);
-  align-items: center;
-  max-width: var(--container-xl);
-  margin: 0 auto;
-  padding: 0 var(--spacing-lg);
-  z-index: 1;
-}
-
-@media (min-width: 1024px) {
-  .hero__container {
-    grid-template-columns: 1fr 1fr;
-    padding: 0 var(--spacing-2xl);
-    gap: var(--spacing-6xl);
-  }
-}
-
-.hero__content {
-  text-align: center;
-  animation: fadeInUp 0.8s ease-out;
-}
-
-@media (min-width: 1024px) {
-  .hero__content {
-    text-align: left;
-  }
-}
-
-.hero__title {
-  font-size: clamp(2.5rem, 5vw, 4rem);
-  font-weight: var(--font-weight-bold);
-  line-height: var(--line-height-tight);
-  margin-bottom: var(--spacing-xl);
-  letter-spacing: -0.02em;
-}
-
-@media (min-width: 768px) {
-  .hero__title {
-    font-size: clamp(3rem, 6vw, 5rem);
-    margin-bottom: var(--spacing-2xl);
-  }
-}
-
-.hero__title-highlight {
-  background: linear-gradient(135deg, #ffa500 0%, #ff6b35 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  display: inline-block;
-}
-
-.hero__subtitle {
-  font-size: var(--font-size-lg);
-  line-height: var(--line-height-relaxed);
-  margin-bottom: var(--spacing-4xl);
-  opacity: 0.9;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-@media (min-width: 768px) {
-  .hero__subtitle {
-    font-size: var(--font-size-xl);
-  }
-}
-
-@media (min-width: 1024px) {
-  .hero__subtitle {
-    margin-left: 0;
-    margin-right: 0;
-  }
-}
-
-.hero__stats {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--spacing-lg);
-  margin-bottom: var(--spacing-4xl);
-}
-
-@media (min-width: 640px) {
-  .hero__stats {
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--spacing-xl);
-  }
-}
-
-.hero__demo {
-  margin-bottom: var(--spacing-4xl);
-}
-
-.hero__actions {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-md);
-  align-items: center;
-}
-
-@media (min-width: 640px) {
-  .hero__actions {
-    flex-direction: row;
-    justify-content: center;
-    gap: var(--spacing-lg);
-  }
-}
-
-@media (min-width: 1024px) {
-  .hero__actions {
-    justify-content: flex-start;
-  }
-}
-
-.hero__visual {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-}
-
-.ai-visual {
-  position: relative;
-  max-width: 600px;
-  width: 100%;
-  animation: fadeInRight 0.8s ease-out 0.2s both;
-}
-
-.ai-visual__screen {
-  background-color: var(--color-white);
-  border-radius: var(--border-radius-2xl);
-  padding: var(--spacing-lg);
-  box-shadow: 
-    0 25px 50px rgba(0, 0, 0, 0.4),
-    0 10px 25px rgba(0, 0, 0, 0.3);
-  transform: perspective(1000px) rotateY(-8deg) rotateX(5deg);
-  transition: transform var(--transition-slow);
-}
-
-.ai-visual__screen:hover {
-  transform: perspective(1000px) rotateY(-4deg) rotateX(2deg);
-}
-
-.ai-visual__img {
-  width: 100%;
-  height: auto;
-  border-radius: var(--border-radius-lg);
-  background: linear-gradient(45deg, #f0f0f0, #e0e0e0);
-  min-height: 300px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--color-text-secondary);
-  font-size: var(--font-size-lg);
-}
-
-.ai-visual__floating-elements {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  pointer-events: none;
-}
-
-.floating-element {
-  position: absolute;
-  font-size: var(--font-size-3xl);
-  animation: float 4s ease-in-out infinite;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border-radius: var(--border-radius-full);
-  width: 60px;
-  height: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.floating-element--1 {
-  top: 15%;
-  right: 10%;
-  animation-delay: 0s;
-}
-
-.floating-element--2 {
-  bottom: 30%;
-  left: 5%;
-  animation-delay: 1.5s;
-}
-
-.floating-element--3 {
-  top: 50%;
-  right: 5%;
-  animation-delay: 3s;
-}
-
-@keyframes float {
-  0%, 100% { 
-    transform: translateY(0px) rotate(0deg); 
-  }
-  25% { 
-    transform: translateY(-10px) rotate(1deg); 
-  }
-  50% { 
-    transform: translateY(-20px) rotate(0deg); 
-  }
-  75% { 
-    transform: translateY(-10px) rotate(-1deg); 
-  }
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* 課題提起セクション */
-.challenges {
-  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
-  position: relative;
-}
-
-.challenges::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--color-gray-300), transparent);
-}
-
-.challenges__content {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--spacing-6xl);
-  align-items: start;
-}
-
-@media (min-width: 1024px) {
-  .challenges__content {
-    grid-template-columns: 1fr 1fr;
-    gap: var(--spacing-5xl);
-  }
-}
-
-.challenges__subtitle {
-  font-size: var(--font-size-2xl);
-  font-weight: var(--font-weight-semibold);
-  margin-bottom: var(--spacing-2xl);
-  text-align: center;
-  color: var(--color-text-primary);
-}
-
-@media (min-width: 768px) {
-  .challenges__subtitle {
-    font-size: var(--font-size-3xl);
-  }
-}
-
-.problem-cards {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--spacing-xl);
-}
-
-@media (min-width: 640px) {
-  .problem-cards {
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  }
-}
-
-@media (min-width: 1024px) {
-  .problem-cards {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* 市場機会セクション */
-.market-opportunity {
-  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
-  color: var(--color-white);
-  position: relative;
-  overflow: hidden;
-}
-
-.market-opportunity::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: 
-    radial-gradient(circle at 70% 20%, rgba(255, 140, 0, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 20% 80%, rgba(255, 107, 53, 0.1) 0%, transparent 50%);
-  opacity: 0.6;
-}
-
-.market__content {
-  position: relative;
-  z-index: 1;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--spacing-6xl);
-  align-items: center;
-}
-
-@media (min-width: 1024px) {
-  .market__content {
-    grid-template-columns: 1fr 1fr;
-    gap: var(--spacing-5xl);
-  }
-}
-
-.market__subtitle {
-  font-size: var(--font-size-2xl);
-  font-weight: var(--font-weight-semibold);
-  margin-bottom: var(--spacing-2xl);
-  text-align: center;
-}
-
-@media (min-width: 768px) {
-  .market__subtitle {
-    font-size: var(--font-size-3xl);
-  }
-}
-
-.growth-chart {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--spacing-2xl);
-  align-items: center;
-}
-
-@media (min-width: 768px) {
-  .growth-chart {
-    grid-template-columns: 1fr 1fr;
-    gap: var(--spacing-xl);
-  }
-}
-
-.growth-chart__visual {
-  text-align: center;
-}
-
-.growth-chart__visual img {
-  width: 100%;
-  max-width: 400px;
-  height: auto;
-  border-radius: var(--border-radius-xl);
-  box-shadow: var(--shadow-lg);
-}
-
-.growth-stat {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-sm);
-  margin-bottom: var(--spacing-xl);
-  padding: var(--spacing-lg);
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: var(--border-radius-lg);
-  backdrop-filter: blur(10px);
 }
+/* End of Footer */
 
-.growth-stat__label {
-  font-size: var(--font-size-sm);
-  opacity: 0.8;
-  font-weight: var(--font-weight-medium);
-}
-
-.growth-stat__value {
-  font-size: var(--font-size-4xl);
-  font-weight: var(--font-weight-bold);
-  background: linear-gradient(135deg, #ffa500 0%, #ff6b35 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.growth-chart__description {
-  opacity: 0.9;
-  line-height: var(--line-height-relaxed);
-  font-size: var(--font-size-lg);
-}
-
-.vision-quote {
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: var(--border-radius-2xl);
-  padding: var(--spacing-3xl);
-  text-align: center;
-  backdrop-filter: blur(20px);
-  position: relative;
-  overflow: hidden;
-}
-
-.vision-quote::before {
-  content: '"';
-  position: absolute;
-  top: var(--spacing-lg);
-  left: var(--spacing-lg);
-  font-size: 4rem;
-  opacity: 0.3;
-  color: var(--color-primary-light);
-  font-family: serif;
-}
-
-.vision-quote__text {
-  font-size: var(--font-size-lg);
-  line-height: var(--line-height-relaxed);
-  margin-bottom: var(--spacing-xl);
-  font-style: italic;
-  position: relative;
-  z-index: 1;
-}
-
-@media (min-width: 768px) {
-  .vision-quote__text {
-    font-size: var(--font-size-xl);
-  }
-}
-
-.vision-quote__source {
-  font-size: var(--font-size-base);
-  opacity: 0.8;
-  font-style: normal;
-  font-weight: var(--font-weight-medium);
-  color: var(--color-primary-light);
-}
-
-/* プロダクトセクション */
-.product {
-  background: var(--color-bg-primary);
-  position: relative;
-}
-
-.product::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--color-gray-300), transparent);
-}
-
-.product__features {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--spacing-2xl);
-}
-
-@media (min-width: 768px) {
-  .product__features {
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: var(--spacing-xl);
-  }
-}
-
-@media (min-width: 1200px) {
-  .product__features {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-/* メインコンテンツ */
-.main {
-  margin-top: 80px; /* ヘッダーの高さ分 */
-}
-
-/* ヒーローセクション */
-.hero {
-  background: var(--gradient-hero);
-  color: var(--color-white);
-  position: relative;
-  overflow: hidden;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-}
-
-.hero::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><radialGradient id="g"><stop offset="20%" stop-opacity=".1"/><stop offset="50%" stop-opacity=".05"/><stop offset="100%" stop-opacity="0"/></radialGradient></defs><circle cx="200" cy="200" r="180" fill="url(%23g)"/><circle cx="800" cy="300" r="120" fill="url(%23g)"/><circle cx="400" cy="700" r="150" fill="url(%23g)"/></svg>') no-repeat center;
-  background-size: cover;
-  opacity: 0.3;
-}
-
-.hero__container {
-  position: relative;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--spacing-4xl);
-  align-items: center;
-  max-width: var(--container-xl);
-  margin: 0 auto;
-  padding: 0 var(--spacing-md);
-  z-index: 1;
-}
-
-@media (min-width: 1024px) {
-  .hero__container {
-    grid-template-columns: 1fr 1fr;
-    padding: 0 var(--spacing-xl);
-  }
-}
-
-.hero__content {
-  text-align: center;
-}
-
-@media (min-width: 1024px) {
-  .hero__content {
-    text-align: left;
-  }
-}
-
-.hero__title {
-  font-size: var(--font-size-4xl);
-  font-weight: var(--font-weight-bold);
-  line-height: var(--line-height-tight);
-  margin-bottom: var(--spacing-lg);
-}
-
-@media (min-width: 768px) {
-  .hero__title {
-    font-size: var(--font-size-6xl);
-  }
-}
-
-.hero__title-highlight {
-  background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-accent-light) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.hero__subtitle {
-  font-size: var(--font-size-lg);
-  line-height: var(--line-height-relaxed);
-  margin-bottom: var(--spacing-3xl);
-  opacity: 0.9;
-}
-
-@media (min-width: 768px) {
-  .hero__subtitle {
-    font-size: var(--font-size-xl);
-  }
-}
-
-.hero__stats {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--spacing-lg);
-  margin-bottom: var(--spacing-3xl);
-}
-
-@media (min-width: 640px) {
-  .hero__stats {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-.hero__demo {
-  margin-bottom: var(--spacing-3xl);
-}
-
-.hero__actions {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-md);
-  align-items: center;
-}
-
-@media (min-width: 640px) {
-  .hero__actions {
-    flex-direction: row;
-    justify-content: center;
-  }
-}
-
-@media (min-width: 1024px) {
-  .hero__actions {
-    justify-content: flex-start;
-  }
-}
-
-.hero__visual {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.ai-visual {
-  position: relative;
-  max-width: 500px;
-  width: 100%;
-}
-
-.ai-visual__screen {
-  background-color: var(--color-white);
-  border-radius: var(--border-radius-2xl);
-  padding: var(--spacing-md);
-  box-shadow: var(--shadow-2xl);
-  transform: perspective(1000px) rotateY(-5deg);
-}
-
-.ai-visual__img {
-  width: 100%;
-  height: auto;
-  border-radius: var(--border-radius-lg);
-}
-
-.ai-visual__floating-elements {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  pointer-events: none;
-}
-
-.floating-element {
-  position: absolute;
-  font-size: var(--font-size-2xl);
-  animation: float 3s ease-in-out infinite;
-}
-
-.floating-element--1 {
-  top: 10%;
-  right: 10%;
-  animation-delay: 0s;
-}
-
-.floating-element--2 {
-  bottom: 30%;
-  left: 5%;
-  animation-delay: 1s;
-}
-
-.floating-element--3 {
-  top: 50%;
-  right: 5%;
-  animation-delay: 2s;
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
-}
-
-/* 課題提起セクション */
-.challenges {
-  background-color: var(--color-bg-secondary);
-}
-
-.challenges__content {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--spacing-5xl);
-}
-
-@media (min-width: 1024px) {
-  .challenges__content {
-    grid-template-columns: 1fr 1fr;
-    align-items: start;
-  }
-}
-
-.challenges__subtitle {
-  font-size: var(--font-size-2xl);
-  font-weight: var(--font-weight-semibold);
-  margin-bottom: var(--spacing-xl);
-  text-align: center;
-}
-
-.problem-cards {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--spacing-xl);
-}
-
-@media (min-width: 640px) {
-  .problem-cards {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (min-width: 1024px) {
-  .problem-cards {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* 市場機会セクション */
-.market-opportunity {
-  background: var(--gradient-dark);
-  color: var(--color-white);
-}
-
-.market__content {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--spacing-5xl);
-}
-
-@media (min-width: 1024px) {
-  .market__content {
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
-  }
-}
-
-.market__subtitle {
-  font-size: var(--font-size-2xl);
-  font-weight: var(--font-weight-semibold);
-  margin-bottom: var(--spacing-xl);
-  text-align: center;
-}
-
-.growth-chart {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--spacing-xl);
-  align-items: center;
-}
-
-@media (min-width: 768px) {
-  .growth-chart {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-.growth-chart__visual img {
-  width: 100%;
-  height: auto;
-  border-radius: var(--border-radius-lg);
-}
-
-.growth-stat {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-sm);
-  margin-bottom: var(--spacing-lg);
-}
-
-.growth-stat__label {
-  font-size: var(--font-size-sm);
-  opacity: 0.8;
-}
-
-.growth-stat__value {
-  font-size: var(--font-size-3xl);
-  font-weight: var(--font-weight-bold);
-  color: var(--color-primary-light);
-}
-
-.growth-chart__description {
-  opacity: 0.9;
-  line-height: var(--line-height-relaxed);
-}
-
-.vision-quote {
-  background-color: rgba(255, 255, 255, 0.1);
-  border-radius: var(--border-radius-xl);
-  padding: var(--spacing-2xl);
-  text-align: center;
-}
-
-.vision-quote__text {
-  font-size: var(--font-size-lg);
-  line-height: var(--line-height-relaxed);
-  margin-bottom: var(--spacing-lg);
-  font-style: italic;
-}
-
-@media (min-width: 768px) {
-  .vision-quote__text {
-    font-size: var(--font-size-xl);
-  }
-}
-
-.vision-quote__source {
-  font-size: var(--font-size-sm);
-  opacity: 0.8;
-  font-style: normal;
-}
-
-/* プロダクトセクション */
-.product {
-  background-color: var(--color-bg-primary);
-}
-
-.product__features {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--spacing-xl);
-}
-
-@media (min-width: 768px) {
-  .product__features {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-/* システム構成図セクション */
-.system-architecture {
-  background-color: var(--color-bg-secondary);
-}
-
-.architecture__diagram {
-  text-align: center;
-  margin-bottom: var(--spacing-4xl);
-}
-
-.architecture__img {
-  max-width: 100%;
-  height: auto;
-  border-radius: var(--border-radius-xl);
-  box-shadow: var(--shadow-lg);
-}
-
-.architecture__subtitle {
-  font-size: var(--font-size-2xl);
-  font-weight: var(--font-weight-semibold);
-  text-align: center;
-  margin-bottom: var(--spacing-lg);
-}
-
-.architecture__note {
-  text-align: center;
-  color: var(--color-text-secondary);
-  margin-bottom: var(--spacing-2xl);
-}
-
-.integration-logos {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: var(--spacing-lg);
-  align-items: center;
-  justify-items: center;
-}
-
-@media (max-width: 768px) {
-  .integration-logos {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-
-@media (max-width: 480px) {
-  .integration-logos {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-.integration-logos img {
-  width: 48px;
-  height: 48px;
-  object-fit: contain;
-  opacity: 0.7;
-  transition: opacity var(--transition-fast);
-}
-
-.integration-logos img:hover {
-  opacity: 1;
-}
+/* The later, alternative/simplified full-block definitions for .hero, .challenges, .market-opportunity, .product, and .system-architecture have been removed. */
+/* The primary, refactored definitions appearing earlier in the file are now the sole source of truth for these sections. */
 
 /* デモセクション */
+/* Ensured background color variable is used */
 .demo-section {
   background-color: var(--color-bg-primary);
 }
@@ -2193,9 +825,10 @@ section {
 }
 
 /* 差別化セクション */
+/* Applied text color variable */
 .differentiation {
   background: var(--gradient-dark);
-  color: var(--color-white);
+  color: var(--color-text-inverse);
 }
 
 .diff__features {
@@ -2210,17 +843,17 @@ section {
   }
 }
 
+/* Assumes HTML structure: <div class="card card--spacious-padding diff-card"> */
 .diff-card {
   background-color: rgba(255, 255, 255, 0.1);
-  border-radius: var(--border-radius-xl);
-  padding: var(--spacing-2xl);
-  backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.2);
-  transition: all var(--transition-normal);
+  backdrop-filter: blur(10px);
+  /* border-radius, transition from .card */
+  /* padding from .card--spacious-padding */
 }
 
 .diff-card:hover {
-  transform: translateY(-4px);
+  /* transform from .card:hover, border-color from .card:hover (if applicable) */
   background-color: rgba(255, 255, 255, 0.15);
 }
 
@@ -2250,6 +883,7 @@ section {
 }
 
 /* 提供価値セクション */
+/* Ensured background color variable is used */
 .value-proposition {
   background-color: var(--color-bg-secondary);
 }
@@ -2260,29 +894,25 @@ section {
   gap: var(--spacing-4xl);
 }
 
+/* Assumes HTML structure: <div class="card card--spacious-padding target-card"> */
 .target-card {
-  background-color: var(--color-white);
-  border-radius: var(--border-radius-xl);
-  padding: var(--spacing-2xl);
-  box-shadow: var(--shadow-md);
-  transition: all var(--transition-normal);
+  /* background-color, border-radius, box-shadow, transition from .card */
+  /* padding from .card--spacious-padding */
+  /* text-align for icon and title to be handled by .text-center on those elements or .card--text-center on card */
 }
+/* Hover styles inherited from .card:hover */
 
-.target-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-xl);
-}
 
 .target-card__icon {
   font-size: var(--font-size-4xl);
-  text-align: center;
+  /* text-align: center; -> Apply .text-center utility class in HTML */
   margin-bottom: var(--spacing-lg);
 }
 
 .target-card__title {
   font-size: var(--font-size-2xl);
   font-weight: var(--font-weight-semibold);
-  text-align: center;
+  /* text-align: center; -> Apply .text-center utility class in HTML */
   margin-bottom: var(--spacing-xl);
   color: var(--color-text-primary);
 }
@@ -2349,6 +979,7 @@ section {
 }
 
 /* 料金プランセクション */
+/* Ensured background color variable is used */
 .pricing {
   background-color: var(--color-bg-primary);
 }
@@ -2373,28 +1004,27 @@ section {
   }
 }
 
+/* Assumes HTML: <div class="card card--spacious-padding card--text-center plan-card"> */
 .plan-card {
-  background-color: var(--color-white);
-  border: 2px solid var(--color-gray-200);
-  border-radius: var(--border-radius-xl);
-  padding: var(--spacing-2xl);
-  text-align: center;
-  position: relative;
-  transition: all var(--transition-normal);
+  /* background-color, border-radius, transition from .card */
+  /* padding from .card--spacious-padding */
+  /* text-align from .card--text-center */
+  border: 2px solid var(--color-gray-200); /* Override .card border */
+  position: relative; /* Keep for badge */
 }
 
 .plan-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-xl);
+  /* transform, box-shadow from .card:hover */
+  /* border-color from .card:hover (var(--color-primary-light)) - if this is not desired, override here */
 }
 
 .plan-card--featured {
   border-color: var(--color-primary);
-  transform: scale(1.05);
+  transform: scale(1.05); /* This should be fine on top of .card hover */
 }
 
 .plan-card--featured:hover {
-  transform: scale(1.05) translateY(-4px);
+  transform: scale(1.05) translateY(-4px); /* Combine with .card hover */
 }
 
 .plan-card__badge {
@@ -2463,7 +1093,7 @@ section {
 }
 
 .pricing__note {
-  text-align: center;
+  /* text-align: center; -> Apply .text-center utility class in HTML */
   margin-top: var(--spacing-2xl);
   color: var(--color-text-secondary);
   font-size: var(--font-size-sm);

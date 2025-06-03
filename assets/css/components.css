@@ -186,6 +186,11 @@
   display: inline-block;
 }
 
+/* テキストユーティリティ */
+.text-center {
+  text-align: center;
+}
+
 /* カード */
 .card {
   background-color: var(--color-white);
@@ -217,6 +222,15 @@
 
 .card:hover::before {
   background: var(--gradient-primary);
+}
+
+/* カードバリアント */
+.card--spacious-padding {
+  padding: var(--spacing-2xl);
+}
+
+.card--text-center {
+  text-align: center;
 }
 
 /* 統計カード */
@@ -1334,4 +1348,16 @@
 
 .flow-legend__color--highlight {
   background: var(--gradient-primary);
+}
+
+/* ユーティリティ */
+/* Note: Parent element needs position: relative for this to work as expected */
+.section-divider-top::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-gray-300), transparent);
 }
