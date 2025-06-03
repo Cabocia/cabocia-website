@@ -3,21 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>カボシア株式会社 - 法人の意思決定は、AIで。</title>
-    <meta name="description" content="個人がAIを使う時代から、法人がAIと意思決定する時代へ。企業の散在するデータを一元化し、自然言語で問いかけるだけで即座に分析・提案するホウジンAI。">
+    <title>カボシア株式会社 - 法人の意思決定は、AIで。</title> <meta name="description" content="個人がAIを使う時代から、法人がAIと意思決定する時代へ。企業の散在するデータを一元化し、自然言語で問いかけるだけで即座に分析・提案するホウジンAI。">
     
-    <!-- CSS -->
+   <!-- 基本CSS -->
     <link rel="stylesheet" href="assets/css/reset.css">
     <link rel="stylesheet" href="assets/css/variables.css">
     <link rel="stylesheet" href="assets/css/components.css">
-    <link rel="stylesheet" href="assets/css/sections.css">
-    <link rel="stylesheet" href="assets/css/responsive.css">
     
-    <!-- Favicon -->
+    <!-- セクション別CSS -->
+    <link rel="stylesheet" href="assets/css/sections/header.css">
+    <link rel="stylesheet" href="assets/css/sections/hero.css">
+    <link rel="stylesheet" href="assets/css/sections/product.css">
+    <link rel="stylesheet" href="assets/css/sections/challenges.css">
+    <link rel="stylesheet" href="assets/css/sections/differentiation.css">
+    <link rel="stylesheet" href="assets/css/sections/value-proposition.css">
+    <link rel="stylesheet" href="assets/css/sections/pricing.css">
+    <link rel="stylesheet" href="assets/css/sections/tester-recruitment.css">
+    <link rel="stylesheet" href="assets/css/sections/faq.css">
+    <link rel="stylesheet" href="assets/css/sections/contact.css">
+    <link rel="stylesheet" href="assets/css/sections/footer.css">
+    
     <link rel="icon" href="assets/images/logo/favicon.ico" type="image/x-icon">
 </head>
 <body>
-    <!-- ヘッダー（固定ナビゲーション） -->
     <header class="header">
         <nav class="nav">
             <div class="nav__container">
@@ -30,25 +38,18 @@
                         <a href="#product" class="nav__link">プロダクト</a>
                     </li>
                     <li class="nav__item">
-                        <a href="#solution" class="nav__link">ソリューション</a>
-                    </li>
+                        <a href="#solution" class="nav__link">提供価値</a> </li>
                     <li class="nav__item">
                         <a href="#pricing" class="nav__link">料金プラン</a>
                     </li>
                     <li class="nav__item">
-                        <a href="#case-study" class="nav__link">導入事例</a>
+                        <a href="#faq" class="nav__link">よくある質問</a>
                     </li>
-                    <li class="nav__item">
-                        <a href="#company" class="nav__link">会社情報</a>
-                    </li>
-                </ul>
+                    </ul>
                 
                 <div class="nav__actions">
-                    <a href="#tester" class="btn btn--primary btn--small">無料テスター募集</a>
-                    <a href="#" class="btn btn--secondary btn--small">ログイン</a>
-                </div>
+                    <a href="#contact" class="btn btn--primary btn--small">テスター申し込み</a> <a href="#tester" class="btn btn--secondary btn--small">デモ動画確認</a> </div>
                 
-                <!-- モバイルメニューボタン -->
                 <button class="nav__mobile-toggle">
                     <span></span>
                     <span></span>
@@ -58,83 +59,189 @@
         </nav>
     </header>
 
-    <!-- メインコンテンツ -->
     <main class="main">
-        <!-- ヒーローセクション -->
         <section class="hero" id="hero">
             <div class="hero__container">
                 <div class="hero__content">
                     <h1 class="hero__title">
-                        法人の意思決定は、<span class="hero__title-highlight">AIで。</span>
+                        法人の意思決定は<span class="hero__title-highlight">ホウジンAIと</span>
                     </h1>
-                    
                     <p class="hero__subtitle">
                         「この売上、何が原因だろう？」と聞いたら、<br>
                         社内の"文脈"を理解しているAIが教えてくれる。<br>
-                        <strong>そんな未来が、すぐそこまで来ています。</strong>
+                        <strong>そんな世界がもう来ています。</strong>
                     </p>
                     
-                    <!-- 統計データ -->
-                    <div class="hero__stats">
-                        <div class="stat-card">
-                            <div class="stat-card__number">17%</div>
-                            <div class="stat-card__label">企業として生成AIを活用している</div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-card__number">8%</div>
-                            <div class="stat-card__label">データ活用により、全社で十分な成果を得ている</div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-card__number">50%</div>
-                            <div class="stat-card__label">生成AIに、データ分析や意思決定の機能を期待する</div>
-                        </div>
-                    </div>
+                    <p class="hero__campaign">
+                        🎉 テスター募集中！今なら初期費用無料でお試しで、有償後も永久割引！
+                    </p>
                     
-                    <!-- インタラクティブデモ -->
-                    <div class="hero__demo">
-                        <div class="demo-chat">
-                            <div class="demo-chat__question">
-                                <span class="demo-chat__icon">💭</span>
-                                <span class="demo-chat__text" id="demo-question">「国ごとのユーザー数を教えて」</span>
-                            </div>
-                            <div class="demo-chat__answer">
-                                <span class="demo-chat__icon">🤖</span>
-                                <div class="demo-chat__text" id="demo-answer">
-                                    日本のユーザー数が最も多く、続いてアメリカ、その他の順となっています。
-                                    デバイス別では、日本ではモバイルが60%、アメリカではデスクトップが多い傾向です。
-                                </div>
+                    <div class="hero__video-container">
+                        <div class="hero__video-wrapper">
+                            <div class="hero__video-placeholder">
+                                <div class="hero__video-play-button"></div>
+                                <div class="hero__video-text">サービス紹介動画を見る</div>
                             </div>
                         </div>
                     </div>
                     
-                    <!-- CTA -->
                     <div class="hero__actions">
-                        <a href="#tester" class="btn btn--primary btn--large">テスター募集申込</a>
-                        <a href="#contact" class="btn btn--secondary btn--large">資料ダウンロード</a>
-                        <a href="#demo" class="btn btn--outline btn--large">デモを見る</a>
+                        <a href="#contact" class="btn btn--primary btn--large">資料請求</a>
+                        <a href="#tester" class="btn btn--secondary btn--large">デモ・利用開始</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hero__scroll-indicator">
+                <div class="hero__scroll-text">スクロールして詳細を見る</div>
+                <div class="hero__scroll-arrow"></div>
+            </div>
+        </section>
+
+        <section class="product" id="product">
+            <div class="container">
+                <!-- 課題セクション -->
+                <div class="challenges-section">
+                    <div class="section-header">
+                        <span class="section-number">Problems</span>
+                        <!-- <span class="section-category">事業概要</span> -->
+                        <h2 class="section-title">解決したい課題</h2>
+                    </div>
+                    
+                    <div class="challenges-grid">
+                        <div class="challenge-card" data-challenge="data">
+                            <div class="challenge-card__content">
+                                <h3 class="challenge-card__title">意思決定データの断絶</h3>
+                                <p class="challenge-card__description">
+                                    多様なデータが各システムに散在しており、統合的な分析ができない。
+                                </p>
+                            </div>
+                            <div class="challenge-card__image">
+                                <img src="assets/images/challenges/data-disconnect.jpg" alt="データ断絶の課題" class="challenge-card__img">
+                            </div>
+                        </div>
+                        
+                        <div class="challenge-card" data-challenge="skill">
+                            <div class="challenge-card__content">
+                                <h3 class="challenge-card__title">分析スキルの欠如</h3>
+                                <p class="challenge-card__description">
+                                    専門知識がないと分析できず、属人化・人材難を招いている。
+                                </p>
+                            </div>
+                            <div class="challenge-card__image">
+                                <img src="assets/images/challenges/skill-gap.jpg" alt="スキル不足の課題" class="challenge-card__img">
+                            </div>
+                        </div>
+                        
+                        <div class="challenge-card" data-challenge="efficiency">
+                            <div class="challenge-card__content">
+                                <h3 class="challenge-card__title">データ更新の非効率</h3>
+                                <p class="challenge-card__description">
+                                    更新や集計が人力に頼りがちで、コストも時間も無駄が多い。
+                                </p>
+                            </div>
+                            <div class="challenge-card__image">
+                                <img src="assets/images/challenges/inefficiency.jpg" alt="非効率の課題" class="challenge-card__img">
+                            </div>
+                        </div>
                     </div>
                 </div>
                 
-                <div class="hero__visual">
-                    <div class="hero__visual-content">
-                        <!-- AIチャットのビジュアル表現 -->
-                        <div class="ai-visual">
-                            <div class="ai-visual__screen">
-                                <img src="assets/images/screenshots/ai-demo.png" alt="ホウジンAI デモ画面" class="ai-visual__img">
+                <!-- ソリューションセクション -->
+                <div class="solutions-section">
+                    <div class="section-header">
+                        <span class="section-number">Solution</span>
+                        <!-- <span class="section-category">事業概要</span> -->
+                        <h2 class="section-title">ホウジンAIで解決</h2>
+                    </div>
+                    
+                    <div class="solutions-grid">
+                        <div class="solution-card" data-solution="integration">
+                            <div class="solution-card__content">
+                                <h3 class="solution-card__title">データの一元化</h3>
+                                <p class="solution-card__description">
+                                    全ての社内データをひとつの基盤へ。BigQueryで「散在」を「資産」に変える。
+                                </p>
                             </div>
-                            <div class="ai-visual__floating-elements">
-                                <div class="floating-element floating-element--1">📊</div>
-                                <div class="floating-element floating-element--2">💡</div>
-                                <div class="floating-element floating-element--3">🎯</div>
+                            <div class="solution-card__image">
+                                <img src="assets/images/solutions/data-integration.jpg" alt="データ一元化" class="solution-card__img">
+                            </div>
+                        </div>
+                        
+                        <div class="solution-card" data-solution="ai">
+                            <div class="solution-card__content">
+                                <h3 class="solution-card__title">自然言語AI</h3>
+                                <p class="solution-card__description">
+                                    "誰でも聞ける・すぐ返る"AIアシスタント。専門人材がいなくても、意思決定できる現場に。
+                                </p>
+                            </div>
+                            <div class="solution-card__image">
+                                <img src="assets/images/solutions/natural-language-ai.jpg" alt="自然言語AI" class="solution-card__img">
+                            </div>
+                        </div>
+                        
+                        <div class="solution-card" data-solution="dashboard">
+                            <div class="solution-card__content">
+                                <h3 class="solution-card__title">ダッシュボード</h3>
+                                <p class="solution-card__description">
+                                    定常観測も、深掘探索も。人に頼らず「見える・わかる」ダッシュボード。
+                                </p>
+                            </div>
+                            <div class="solution-card__image">
+                                <img src="assets/images/solutions/dashboard.jpg" alt="ダッシュボード" class="solution-card__img">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Before/After 比較 -->
+                <div class="comparison-section">
+                    <div class="section-header">
+                        <h2 class="section-title">
+                            個人のAI活用は当たり前になった。<br>
+                            でも、<span class="text-highlight">法人として活用</span>できている企業は？
+                        </h2>
+                    </div>
+                    
+                    <div class="comparison-container">
+                        <div class="comparison-card comparison-card--before">
+                            <div class="comparison-card__header">
+                                <h3 class="comparison-card__title">Before: 個人がAIツールを使う</h3>
+                            </div>
+                            <div class="comparison-card__content">
+                                <ul class="comparison-card__list">
+                                    <li>マーケターが個別にChatGPTを活用</li>
+                                    <li>データは各システムに散在</li>
+                                    <li>分析は属人化、解釈は主観に依存</li>
+                                    <li>意思決定に時間がかかり、確信が持てない</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="comparison-arrow">
+                            <div class="arrow-icon">→</div>
+                            <div class="arrow-text">ホウジンAIで解決</div>
+                        </div>
+                        
+                        <div class="comparison-card comparison-card--after">
+                            <div class="comparison-card__header">
+                                <h3 class="comparison-card__title">After: 法人がAIと意思決定する</h3>
+                            </div>
+                            <div class="comparison-card__content">
+                                <ul class="comparison-card__list">
+                                    <li>企業全体のデータが一元化・AI化</li>
+                                    <li>自然言語で問いかけるだけ</li>
+                                    <li>社内の文脈を理解したAIが即座に回答</li>
+                                    <li>意思決定の品質向上と民主化を同時実現</li>
+                                </ul>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-
-        <!-- 課題提起セクション -->
-        <section class="challenges" id="challenges">
+        
+        <!-- <section class="challenges" id="challenges">
             <div class="container">
                 <div class="section-header">
                     <h2 class="section-title">
@@ -142,11 +249,9 @@
                         でも、<span class="text-highlight">法人として活用</span>できている企業は？
                     </h2>
                 </div>
-                
                 <div class="challenges__content">
                     <div class="challenges__problems">
                         <h3 class="challenges__subtitle">解決したい課題</h3>
-                        
                         <div class="problem-cards">
                             <div class="problem-card">
                                 <div class="problem-card__icon">
@@ -157,7 +262,6 @@
                                     多様なデータが各システムに散在しており、統合的な分析ができない。
                                 </p>
                             </div>
-                            
                             <div class="problem-card">
                                 <div class="problem-card__icon">
                                     <img src="assets/images/icons/skill-gap.svg" alt="スキル不足">
@@ -167,7 +271,6 @@
                                     専門知識がないと分析できず、属人化・人材難を招いている。
                                 </p>
                             </div>
-                            
                             <div class="problem-card">
                                 <div class="problem-card__icon">
                                     <img src="assets/images/icons/inefficiency.svg" alt="非効率">
@@ -179,7 +282,6 @@
                             </div>
                         </div>
                     </div>
-                    
                     <div class="challenges__comparison">
                         <div class="comparison">
                             <div class="comparison__item comparison__item--before">
@@ -191,9 +293,7 @@
                                     <li>意思決定に時間がかかり、確信が持てない</li>
                                 </ul>
                             </div>
-                            
                             <div class="comparison__arrow">→</div>
-                            
                             <div class="comparison__item comparison__item--after">
                                 <h4 class="comparison__title">After: 法人がAIと意思決定する</h4>
                                 <ul class="comparison__list">
@@ -207,310 +307,284 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> -->
 
-        <!-- 市場機会セクション -->
-        <section class="market-opportunity" id="market">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">なぜ1次データ×AIなのか</h2>
-                </div>
-                
-                <div class="market__content">
-                    <div class="market__growth">
-                        <h3 class="market__subtitle">市場規模と今後の展望について</h3>
-                        <div class="growth-chart">
-                            <div class="growth-chart__visual">
-                                <img src="assets/images/charts/ai-market-growth.png" alt="生成AI市場成長グラフ">
-                            </div>
-                            <div class="growth-chart__info">
-                                <div class="growth-stat">
-                                    <span class="growth-stat__label">世界の生成AI市場規模</span>
-                                    <span class="growth-stat__value">CAGR +37%</span>
-                                </div>
-                                <p class="growth-chart__description">
-                                    AI市場は今後数年間で大きな成長が期待されており、
-                                    企業の業務効率化や新たなビジネスモデルの創出に寄与すると考えられます。
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="market__vision">
-                        <div class="vision-quote">
-                            <blockquote class="vision-quote__text">
-                                AGI（人間の叡智の10倍賢いAI）は10年以内に実現される。<br>
-                                つまり、将来AGIを触る人と触らない人で、<br>
-                                <strong>人間対サルぐらいの差ができてしまう</strong>
-                            </blockquote>
-                            <cite class="vision-quote__source">孫正義氏 - SoftBank World（2023年10月4日）</cite>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- プロダクト紹介セクション -->
-        <section class="product" id="product">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">
-                        企業の文脈を理解したAI顧問<br>
-                        <span class="text-highlight">『ホウジンAI』</span>
-                    </h2>
-                    <p class="section-description">
-                        「この売上、何が原因だろう？」と聞いたら、<br>
-                        社内の"文脈"を理解しているAIが教えてくれる。
-                    </p>
-                </div>
-                
-                <div class="product__features">
-                    <div class="feature-card">
-                        <div class="feature-card__icon">
-                            <img src="assets/images/icons/data-integration.svg" alt="データ一元化">
-                        </div>
-                        <h3 class="feature-card__title">データの一元化</h3>
-                        <p class="feature-card__description">
-                            全ての社内データをひとつの基盤へ。BigQueryで「散在」を「資産」に変える。
-                        </p>
-                        <ul class="feature-card__details">
-                            <li>220以上の媒体との自動連携</li>
-                            <li>BigQueryベースの堅牢なデータ基盤</li>
-                            <li>全社内データを統合管理</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="feature-card">
-                        <div class="feature-card__icon">
-                            <img src="assets/images/icons/natural-language.svg" alt="自然言語AI">
-                        </div>
-                        <h3 class="feature-card__title">自然言語AI</h3>
-                        <p class="feature-card__description">
-                            「誰でも聞ける・すぐ返る」AIアシスタント。専門人材がいなくても、意思決定できる現場に。
-                        </p>
-                        <ul class="feature-card__details">
-                            <li>企業の文脈を理解したAIアシスタント</li>
-                            <li>専門知識不要で誰でも質問可能</li>
-                            <li>「誰でも聞ける・すぐ返る」意思決定支援</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="feature-card">
-                        <div class="feature-card__icon">
-                            <img src="assets/images/icons/dashboard.svg" alt="ダッシュボード">
-                        </div>
-                        <h3 class="feature-card__title">インテリジェントダッシュボード</h3>
-                        <p class="feature-card__description">
-                            定常観測も、深掘探索も。人に頼らず「見える・わかる」ダッシュボード。
-                        </p>
-                        <ul class="feature-card__details">
-                            <li>Looker Studioベースの直感的UI</li>
-                            <li>定常観測と深掘探索の両立</li>
-                            <li>リアルタイム分析・レポート自動生成</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- システム構成図セクション -->
-        <section class="system-architecture" id="architecture">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">システム構成</h2>
-                </div>
-                
-                <div class="architecture__diagram">
-                    <img src="assets/images/diagrams/system-architecture.png" alt="ホウジンAI システム構成図" class="architecture__img">
-                </div>
-                
-                <div class="architecture__integrations">
-                    <h3 class="architecture__subtitle">連携サービス例</h3>
-                    <p class="architecture__note">
-                        <strong>ホウジンAIは2025年6月現在、220以上の媒体と連携可能です。</strong><br>
-                        記載のないサービスの接続可否についてはお問い合わせください。
-                    </p>
-                    
-                    <div class="integration-logos">
-                        <img src="assets/images/integrations/amazon.svg" alt="Amazon">
-                        <img src="assets/images/integrations/google-ads.svg" alt="Google Ads">
-                        <img src="assets/images/integrations/meta.svg" alt="Meta">
-                        <img src="assets/images/integrations/yahoo.svg" alt="Yahoo!">
-                        <img src="assets/images/integrations/instagram.svg" alt="Instagram">
-                        <img src="assets/images/integrations/twitter.svg" alt="X(Twitter)">
-                        <img src="assets/images/integrations/youtube.svg" alt="YouTube">
-                        <img src="assets/images/integrations/microsoft.svg" alt="Microsoft">
-                        <img src="assets/images/integrations/pinterest.svg" alt="Pinterest">
-                        <img src="assets/images/integrations/tiktok.svg" alt="TikTok">
-                        <img src="assets/images/integrations/apple.svg" alt="Apple">
-                        <img src="assets/images/integrations/rakuten.svg" alt="楽天">
-                        <img src="assets/images/integrations/analytics.svg" alt="Google Analytics">
-                        <img src="assets/images/integrations/bigquery.svg" alt="BigQuery">
-                        <img src="assets/images/integrations/sheets.svg" alt="Google Sheets">
-                        <img src="assets/images/integrations/line.svg" alt="LINE">
-                        <img src="assets/images/integrations/shopify.svg" alt="Shopify">
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- デモセクション -->
-        <section class="demo-section" id="demo">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">実際の質問例</h2>
-                    <p class="section-description">
-                        ホウジンAIに実際に質問できる内容の例をご紹介します
-                    </p>
-                </div>
-                
-                <div class="demo__examples">
-                    <div class="question-examples">
-                        <div class="question-example">"直近3ヶ月で売上が伸びた商品は？"</div>
-                        <div class="question-example">"一番売れているSKUは？"</div>
-                        <div class="question-example">"新規獲得コストが高騰しているチャネルは？"</div>
-                        <div class="question-example">"今月の広告の費用対効果を比較して"</div>
-                        <div class="question-example">"今月止めるべき広告施策は？"</div>
-                        <div class="question-example">"昨年同時期に比べて売上が落ちた要因は？"</div>
-                        <div class="question-example">"商品レビューで評価が悪いものは？"</div>
-                        <div class="question-example">"顧客単価が高いのはどの地域？"</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 差別化セクション -->
         <section class="differentiation" id="differentiation">
             <div class="container">
                 <div class="section-header">
-                    <h2 class="section-title">他のAIツールとの違い</h2>
+                    <h2 class="section-title">ホウジンAIが選ばれる理由</h2>
+                    <p class="section-description">他のAIツールとの違い</p>
                 </div>
                 
-                <div class="diff__features">
-                    <div class="diff-card">
-                        <div class="diff-card__number">01</div>
-                        <h3 class="diff-card__title">企業コンテキストの理解</h3>
-                        <p class="diff-card__description">
-                            一般的なAIツールとは異なり、<strong>その企業固有の文脈・業界・事業モデルを学習</strong>したAIが応答。
-                            「汎用的な答え」ではなく「その会社にとっての最適解」を提示。
-                        </p>
+                <div class="diff-features">
+                    <div class="diff-card" data-number="01">
+                        <div class="diff-card__number">
+                            <span class="diff-card__number-text">01</span>
+                        </div>
+                        <div class="diff-card__content">
+                            <h3 class="diff-card__title">企業コンテキストの理解</h3>
+                            <p class="diff-card__description">
+                                一般的なAIツールとは異なり、<strong>その企業固有の文脈・業界・事業モデルを学習</strong>したAIが応答。
+                            </p>
+                            <div class="diff-card__details">
+                                <div class="detail-item">
+                                    <span class="detail-icon">🏢</span>
+                                    <span class="detail-text">業界特化型学習</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-icon">🎯</span>
+                                    <span class="detail-text">企業文脈理解</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-icon">🧠</span>
+                                    <span class="detail-text">カスタムAIモデル</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="diff-card__visual">
+                            <div class="context-visualization">
+                                <div class="context-circle context-circle--main">
+                                    <span>ホウジンAI</span>
+                                </div>
+                                <div class="context-circle context-circle--industry">
+                                    <span>業界知識</span>
+                                </div>
+                                <div class="context-circle context-circle--company">
+                                    <span>企業文脈</span>
+                                </div>
+                                <div class="context-circle context-circle--business">
+                                    <span>事業モデル</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     
-                    <div class="diff-card">
-                        <div class="diff-card__number">02</div>
-                        <h3 class="diff-card__title">完全統合型プラットフォーム</h3>
-                        <p class="diff-card__description">
-                            データ連携・保存・分析・AI・ダッシュボードまでを一気通貫で提供。
-                            <strong>「ツールを組み合わせる手間」を完全に排除。</strong>
-                        </p>
+                    <div class="diff-card" data-number="02">
+                        <div class="diff-card__number">
+                            <span class="diff-card__number-text">02</span>
+                        </div>
+                        <div class="diff-card__content">
+                            <h3 class="diff-card__title">完全統合型プラットフォーム</h3>
+                            <p class="diff-card__description">
+                                データ連携・保存・分析・AI・ダッシュボードまでを一気通貫で提供。
+                            </p>
+                            <div class="diff-card__details">
+                                <div class="detail-item">
+                                    <span class="detail-icon">🔗</span>
+                                    <span class="detail-text">220以上の媒体連携</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-icon">📊</span>
+                                    <span class="detail-text">統合ダッシュボード</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-icon">⚡</span>
+                                    <span class="detail-text">リアルタイム分析</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="diff-card__visual">
+                            <div class="integration-flow">
+                                <div class="flow-step flow-step--input">
+                                    <span class="flow-icon">📥</span>
+                                    <span class="flow-label">データ収集</span>
+                                </div>
+                                <div class="flow-arrow">→</div>
+                                <div class="flow-step flow-step--process">
+                                    <span class="flow-icon">🔄</span>
+                                    <span class="flow-label">AI分析</span>
+                                </div>
+                                <div class="flow-arrow">→</div>
+                                <div class="flow-step flow-step--output">
+                                    <span class="flow-icon">📊</span>
+                                    <span class="flow-label">可視化</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     
-                    <div class="diff-card">
-                        <div class="diff-card__number">03</div>
-                        <h3 class="diff-card__title">自然言語での意思決定</h3>
-                        <p class="diff-card__description">
-                            「Excelを使える人」「SQLを書ける人」ではなく、
-                            <strong>「日本語で質問できる人」</strong>なら誰でも利用可能。究極のユーザビリティを実現。
-                        </p>
+                    <div class="diff-card" data-number="03">
+                        <div class="diff-card__number">
+                            <span class="diff-card__number-text">03</span>
+                        </div>
+                        <div class="diff-card__content">
+                            <h3 class="diff-card__title">自然言語での意思決定</h3>
+                            <p class="diff-card__description">
+                                <strong>「日本語で質問できる人」</strong>なら誰でも利用可能。究極のユーザビリティを実現。
+                            </p>
+                            <div class="diff-card__details">
+                                <div class="detail-item">
+                                    <span class="detail-icon">💬</span>
+                                    <span class="detail-text">自然言語処理</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-icon">⚡</span>
+                                    <span class="detail-text">即座の回答</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-icon">👥</span>
+                                    <span class="detail-text">誰でも利用可能</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="diff-card__visual">
+                            <div class="chat-demo">
+                                <div class="chat-bubble chat-bubble--user">
+                                    <span>「今月の売上が下がった原因は？」</span>
+                                </div>
+                                <div class="chat-bubble chat-bubble--ai">
+                                    <span>新規顧客獲得が15%減少。広告CVRの低下が主因です。</span>
+                                </div>
+                                <div class="typing-indicator">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="diff-card" data-number="04">
+                        <div class="diff-card__number">
+                            <span class="diff-card__number-text">04</span>
+                        </div>
+                        <div class="diff-card__content">
+                            <h3 class="diff-card__title">連携サービスの豊富さ</h3>
+                            <p class="diff-card__description">
+                                <strong>220以上の媒体</strong>と連携可能。主要なビジネスツールから最新のプラットフォームまで幅広くカバー。
+                            </p>
+                            <div class="diff-card__details">
+                                <div class="detail-item">
+                                    <span class="detail-icon">🔗</span>
+                                    <span class="detail-text">220以上の連携</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-icon">⚡</span>
+                                    <span class="detail-text">自動データ取得</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-icon">🔄</span>
+                                    <span class="detail-text">リアルタイム同期</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="diff-card__visual">
+                            <div class="integration-showcase">
+                                <div class="integration-showcase__text">
+                                    <p class="integration-note">
+                                        ホウジンAIは2025年6月現在、<span class="highlight-number">220以上の媒体</span>と連携可能です。<br>
+                                        記載のないサービスの接続可否についてはお問い合わせください。
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="integration-showcase__image">
+                        <img src="assets/images/integration-services.png" alt="連携サービス例" class="integration-services-img">
+                    </div>
+                </div>
+                
+                <!-- 競合比較表 -->
+                <div class="comparison-table-section">
+                    <div class="section-header">
+                        <h3 class="section-subtitle">競合他社との比較</h3>
                     </div>
                     
-                    <div class="diff-card">
-                        <div class="diff-card__number">04</div>
-                        <h3 class="diff-card__title">継続学習型AI</h3>
-                        <p class="diff-card__description">
-                            利用すればするほど、その企業にとって賢くなるAI。
-                            <strong>蓄積されたデータ・質問・回答パターンから、より精度の高い洞察を提供。</strong>
-                        </p>
+                    <div class="comparison-table">
+                        <div class="comparison-table__header">
+                            <div class="comparison-table__cell comparison-table__cell--feature">機能</div>
+                            <div class="comparison-table__cell comparison-table__cell--ours">ホウジンAI</div>
+                            <div class="comparison-table__cell comparison-table__cell--competitor">一般的なBIツール</div>
+                            <div class="comparison-table__cell comparison-table__cell--competitor">チャットAI</div>
+                        </div>
+                        
+                        <div class="comparison-table__row">
+                            <div class="comparison-table__cell comparison-table__cell--feature">企業文脈理解</div>
+                            <div class="comparison-table__cell comparison-table__cell--ours">
+                                <span class="comparison-check comparison-check--yes">✓</span>
+                            </div>
+                            <div class="comparison-table__cell comparison-table__cell--competitor">
+                                <span class="comparison-check comparison-check--no">×</span>
+                            </div>
+                            <div class="comparison-table__cell comparison-table__cell--competitor">
+                                <span class="comparison-check comparison-check--partial">△</span>
+                            </div>
+                        </div>
+                        
+                        <div class="comparison-table__row">
+                            <div class="comparison-table__cell comparison-table__cell--feature">自然言語対話</div>
+                            <div class="comparison-table__cell comparison-table__cell--ours">
+                                <span class="comparison-check comparison-check--yes">✓</span>
+                            </div>
+                            <div class="comparison-table__cell comparison-table__cell--competitor">
+                                <span class="comparison-check comparison-check--no">×</span>
+                            </div>
+                            <div class="comparison-table__cell comparison-table__cell--competitor">
+                                <span class="comparison-check comparison-check--yes">✓</span>
+                            </div>
+                        </div>
+                        
+                        <div class="comparison-table__row">
+                            <div class="comparison-table__cell comparison-table__cell--feature">データ統合</div>
+                            <div class="comparison-table__cell comparison-table__cell--ours">
+                                <span class="comparison-check comparison-check--yes">✓</span>
+                            </div>
+                            <div class="comparison-table__cell comparison-table__cell--competitor">
+                                <span class="comparison-check comparison-check--partial">△</span>
+                            </div>
+                            <div class="comparison-table__cell comparison-table__cell--competitor">
+                                <span class="comparison-check comparison-check--no">×</span>
+                            </div>
+                        </div>
+                        
+                        <div class="comparison-table__row">
+                            <div class="comparison-table__cell comparison-table__cell--feature">専門知識不要</div>
+                            <div class="comparison-table__cell comparison-table__cell--ours">
+                                <span class="comparison-check comparison-check--yes">✓</span>
+                            </div>
+                            <div class="comparison-table__cell comparison-table__cell--competitor">
+                                <span class="comparison-check comparison-check--no">×</span>
+                            </div>
+                            <div class="comparison-table__cell comparison-table__cell--competitor">
+                                <span class="comparison-check comparison-check--partial">△</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- 提供価値セクション -->
         <section class="value-proposition" id="solution">
-            <div class="container">
+             <div class="container">
                 <div class="section-header">
-                    <h2 class="section-title">みんながそのままで輝ける世界へ</h2>
+                    <h2 class="section-title">「頭脳労働」から「頭脳解放」へ</h2>
                 </div>
-                
                 <div class="value__targets">
                     <div class="target-card">
                         <div class="target-card__icon">📊</div>
                         <h3 class="target-card__title">マーケター・データ担当者への価値</h3>
-                        
                         <div class="target-card__content">
                             <div class="target-card__problems">
                                 <h4>従来の課題</h4>
-                                <ul>
-                                    <li>データ収集・整形に時間の8割を費やす</li>
-                                    <li>高度な分析スキルが必要で属人化</li>
-                                    <li>複数ツールを行き来する非効率性</li>
-                                    <li>「何を見るべきか」から悩む状態</li>
-                                </ul>
+                                <ul><li>データ収集・整形に時間の8割を費やす</li></ul>
                             </div>
-                            
                             <div class="target-card__solutions">
                                 <h4>提供価値</h4>
-                                <ul>
-                                    <li><strong>時間の解放</strong>：データ作業から分析・思考へのシフト</li>
-                                    <li><strong>スキルの民主化</strong>：専門知識なしで深い洞察を取得</li>
-                                    <li><strong>意思決定の加速</strong>：リアルタイムでの課題発見・解決提案</li>
-                                    <li><strong>本質への集中</strong>：「問いを立てる力」「判断する力」への専念</li>
-                                </ul>
+                                <ul><li><strong>時間の解放</strong>：データ作業から分析・思考へのシフト</li></ul>
                             </div>
                         </div>
                     </div>
-                    
-                    <div class="target-card">
+                     <div class="target-card">
                         <div class="target-card__icon">🏢</div>
                         <h3 class="target-card__title">経営者・事業責任者への価値</h3>
-                        
-                        <div class="target-card__content">
+                         <div class="target-card__content">
                             <div class="target-card__problems">
                                 <h4>従来の課題</h4>
-                                <ul>
-                                    <li>勘と経験則に依存した意思決定</li>
-                                    <li>データはあるが読み解けない</li>
-                                    <li>施策効果の測定が困難</li>
-                                    <li>部下からの報告待ちによる意思決定遅延</li>
-                                </ul>
+                                <ul><li>勘と経験則に依存した意思決定</li></ul>
                             </div>
-                            
                             <div class="target-card__solutions">
                                 <h4>提供価値</h4>
-                                <ul>
-                                    <li><strong>即座の洞察</strong>：「売上が下がった原因は？」を自然言語で質問→即答</li>
-                                    <li><strong>確信ある決断</strong>：データに基づく客観的判断材料の提供</li>
-                                    <li><strong>組織の透明化</strong>：全社データの可視化による現状把握</li>
-                                    <li><strong>競争優位性</strong>：データドリブンな意思決定による市場優位</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="target-card">
-                        <div class="target-card__icon">🚀</div>
-                        <h3 class="target-card__title">組織全体への価値</h3>
-                        
-                        <div class="target-card__content">
-                            <div class="target-card__problems">
-                                <h4>従来の課題</h4>
-                                <ul>
-                                    <li>意思決定の属人化・ブラックボックス化</li>
-                                    <li>データリテラシーの格差</li>
-                                    <li>部門間のデータ分断</li>
-                                    <li>施策のPDCAサイクルが回らない</li>
-                                </ul>
-                            </div>
-                            
-                            <div class="target-card__solutions">
-                                <h4>提供価値</h4>
-                                <ul>
-                                    <li><strong>意思決定の民主化</strong>：誰もがデータから洞察を得られる環境</li>
-                                    <li><strong>組織学習の加速</strong>：全施策の効果測定・ナレッジ蓄積</li>
-                                    <li><strong>部門連携の強化</strong>：統合されたデータによる全社最適化</li>
-                                    <li><strong>継続的改善</strong>：AIによる自動学習・最適化提案</li>
-                                </ul>
+                                <ul><li><strong>即座の洞察</strong>：「売上が下がった原因は？」を自然言語で質問→即答</li></ul>
                             </div>
                         </div>
                     </div>
@@ -518,361 +592,147 @@
             </div>
         </section>
 
-        <!-- 料金プランセクション -->
+
         <section class="pricing" id="pricing">
             <div class="container">
                 <div class="section-header">
-                    <h2 class="section-title">企業規模に合わせたプラン</h2>
+                    <h2 class="section-title">ご利用料金</h2>
+                    <p class="section-description">🎉 テスター募集中！今なら初期費用無料でお試しで、有償後も永久割引！</p>
                 </div>
                 
-                <div class="pricing__table">
-                    <div class="plan-card">
-                        <div class="plan-card__header">
-                            <h3 class="plan-card__name">ライト</h3>
-                            <div class="plan-card__price">
-                                <span class="plan-card__amount">¥10,000</span>
-                                <span class="plan-card__period">/月</span>
-                            </div>
-                        </div>
-                        
-                        <div class="plan-card__content">
-                            <div class="plan-card__service">データ連携+BI</div>
-                            <div class="plan-card__connections">3接続</div>
-                            <div class="plan-card__target">まずデータ接続のみしておきたい</div>
-                            
-                            <div class="plan-card__note">
-                                <small>*ツール以上データを接続する場合、20,000円/月で承っております。</small>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="plan-card plan-card--featured">
-                        <div class="plan-card__badge">おすすめ</div>
-                        <div class="plan-card__header">
-                            <h3 class="plan-card__name">ベーシック</h3>
-                            <div class="plan-card__price">
-                                <span class="plan-card__amount">¥100,000</span>
-                                <span class="plan-card__period">/月</span>
-                            </div>
-                        </div>
-                        
-                        <div class="plan-card__content">
-                            <div class="plan-card__service">データ連携+BI+AI</div>
-                            <div class="plan-card__connections">5接続</div>
-                            <div class="plan-card__target">主要なデータでAI分析したい</div>
-                        </div>
-                    </div>
-                    
-                    <div class="plan-card">
-                        <div class="plan-card__header">
-                            <h3 class="plan-card__name">プレミアム</h3>
-                            <div class="plan-card__price">
-                                <span class="plan-card__amount">¥300,000</span>
-                                <span class="plan-card__period">/月</span>
-                            </div>
-                        </div>
-                        
-                        <div class="plan-card__content">
-                            <div class="plan-card__service">データ連携+BI+AI</div>
-                            <div class="plan-card__connections">10接続</div>
-                            <div class="plan-card__target">多くのデータでAI分析したい</div>
-                        </div>
-                    </div>
-                    
-                    <div class="plan-card">
-                        <div class="plan-card__header">
-                            <h3 class="plan-card__name">エンタープライズ</h3>
-                            <div class="plan-card__price">
-                                <span class="plan-card__amount">¥500,000</span>
-                                <span class="plan-card__period">~/月</span>
-                            </div>
-                        </div>
-                        
-                        <div class="plan-card__content">
-                            <div class="plan-card__service">データ連携+BI+AI</div>
-                            <div class="plan-card__connections">14接続</div>
-                            <div class="plan-card__target">全社データでAI分析したい</div>
-                        </div>
-                    </div>
+                <div class="pricing__table-wrapper">
+                    <table class="pricing__table">
+                        <thead>
+                            <tr>
+                                <th class="pricing__header pricing__header--category">プラン</th>
+                                <th class="pricing__header pricing__header--plan">ライト</th>
+                                <th class="pricing__header pricing__header--plan pricing__header--featured">ベーシック</th>
+                                <th class="pricing__header pricing__header--plan">プレミアム</th>
+                                <th class="pricing__header pricing__header--plan">エンタープライズ</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="pricing__row pricing__row--service">
+                                <td class="pricing__cell pricing__cell--category">サービス内容</td>
+                                <td class="pricing__cell">データ連携+BI</td>
+                                <td class="pricing__cell pricing__cell--featured">データ連携+BI+AI</td>
+                                <td class="pricing__cell">
+                                    <div class="service-content">
+                                        <span class="service-highlight">弊社担当</span>
+                                        <span>データ連携+BI+AI</span>
+                                    </div>
+                                </td>
+                                <td class="pricing__cell">
+                                    <div class="service-content">
+                                        <span class="service-highlight">弊社担当</span>
+                                        <span>データ連携+BI+AI</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="pricing__row pricing__row--price">
+                                <td class="pricing__cell pricing__cell--category">料金</td>
+                                <td class="pricing__cell">
+                                    <div class="price-content">
+                                        <span class="price-amount">10,000円</span>
+                                        <span class="price-period">/月</span>
+                                    </div>
+                                </td>
+                                <td class="pricing__cell pricing__cell--featured">
+                                    <div class="price-content">
+                                        <span class="price-amount">100,000円</span>
+                                        <span class="price-period">/月</span>
+                                    </div>
+                                </td>
+                                <td class="pricing__cell">
+                                    <div class="price-content">
+                                        <span class="price-amount">300,000円</span>
+                                        <span class="price-period">/月</span>
+                                    </div>
+                                </td>
+                                <td class="pricing__cell">
+                                    <div class="price-content">
+                                        <span class="price-amount">500,000～円</span>
+                                        <span class="price-period">/月</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="pricing__row pricing__row--connections">
+                                <td class="pricing__cell pricing__cell--category">データ接続数/データ容量</td>
+                                <td class="pricing__cell">
+                                    <span class="connections-value">5</span>
+                                    <span class="connections-note">*</span>
+                                </td>
+                                <td class="pricing__cell pricing__cell--featured">
+                                    <span class="connections-value">5</span>
+                                </td>
+                                <td class="pricing__cell">
+                                    <span class="connections-value">10</span>
+                                </td>
+                                <td class="pricing__cell">
+                                    <span class="connections-value">14</span>
+                                </td>
+                            </tr>
+                            <tr class="pricing__row pricing__row--target">
+                                <td class="pricing__cell pricing__cell--category">こんな人におすすめ</td>
+                                <td class="pricing__cell">まずデータ接続のみしてお試したい</td>
+                                <td class="pricing__cell pricing__cell--featured">主要なデータでAI分析したい</td>
+                                <td class="pricing__cell">多くのデータでAI分析したい</td>
+                                <td class="pricing__cell">全社データでAI分析したい</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
                 
-                <div class="pricing__note">
-                    <p>**価格は変更される可能性があります。あらかじめご了承ください。</p>
+                <!-- ベーシックプランのおすすめバッジ -->
+                <div class="featured-badge">おすすめ</div>
+                
+                <div class="pricing__notes">
+                    <p class="pricing-note">*6ツール以上データを接続する場合、20,000円/月で承っております。</p>
+                    <p class="pricing-note">**価格は変更される可能性があります。あらかじめご了承ください。</p>
+                </div>
+                
+                <div class="pricing__actions">
+                    <a href="#contact" class="btn btn--primary btn--large">お申し込み・お問い合わせ</a>
                 </div>
             </div>
         </section>
 
-        <!-- テスター募集セクション -->
         <section class="tester-recruitment" id="tester">
             <div class="container">
                 <div class="section-header">
-                    <h2 class="section-title">テスター様を募集中です</h2>
+                    <h2 class="section-title">まずは無料で試してみませんか？</h2>
+                    <p class="section-description">
+                        テスターのお申込み、またはデモ画面を動画で見る。
+                    </p>
+                </div>
+                <div class="tester-recruitment__actions">
+                    <a href="#contact" class="btn btn--primary btn--large">テスターを申し込む</a>
+                    <a href="#" class="btn btn--outline btn--large tester-recruitment__demo-video-btn">デモ動画を見る</a> 
                 </div>
                 
                 <div class="tester__content">
                     <div class="tester__benefits">
                         <div class="benefit-card">
-                            <div class="benefit-card__icon">⚡</div>
-                            <h3 class="benefit-card__title">データ取得の手間ゼロ</h3>
-                            <p class="benefit-card__description">
-                                面倒なデータ収集や整形はすべて自動化。
-                                手作業の集計から解放され、分析に集中できます。
-                            </p>
-                        </div>
-                        
-                        <div class="benefit-card">
                             <div class="benefit-card__icon">🚀</div>
                             <h3 class="benefit-card__title">テスター限定の早期構築支援</h3>
-                            <p class="benefit-card__description">
-                                過去データを逃さず、すぐに分析基盤を整備。
-                                早期参加だからこそ、環境構築を最短でサポート。
-                            </p>
+                            <p class="benefit-card__description">専属チームが導入から活用まで徹底サポート。あなたのビジネスに最適化されたAIを最速で構築します。</p>
                         </div>
-                        
                         <div class="benefit-card">
-                            <div class="benefit-card__icon">💰</div>
-                            <h3 class="benefit-card__title">無料＆優待価格で試せるチャンス</h3>
-                            <p class="benefit-card__description">
-                                テスター期間中は完全無料。
-                                正式リリース後も、特別価格でご利用いただけます。
-                            </p>
-                        </div>
-                    </div>
-                    
-                    <div class="tester__flow">
-                        <h3 class="tester__flow-title">テスター開始までの流れ</h3>
-                        
-                        <div class="flow-steps">
-                            <div class="flow-step">
-                                <div class="flow-step__number">01</div>
-                                <div class="flow-step__title">テスター申し込み</div>
-                            </div>
-                            
-                            <div class="flow-step__arrow">→</div>
-                            
-                            <div class="flow-step">
-                                <div class="flow-step__number">02</div>
-                                <div class="flow-step__title">契約書・NDAの締結</div>
-                            </div>
-                            
-                            <div class="flow-step__arrow">→</div>
-                            
-                            <div class="flow-step">
-                                <div class="flow-step__number">03</div>
-                                <div class="flow-step__title">各種ツールの権限付与</div>
-                            </div>
-                            
-                            <div class="flow-step__arrow">→</div>
-                            
-                            <div class="flow-step flow-step--highlight">
-                                <div class="flow-step__number">04</div>
-                                <div class="flow-step__title">ダッシュボード構築/データ連携</div>
-                            </div>
-                            
-                            <div class="flow-step__arrow">→</div>
-                            
-                            <div class="flow-step flow-step--highlight">
-                                <div class="flow-step__number">05</div>
-                                <div class="flow-step__title">AI構築/トライアル（1ヶ月）の開始</div>
-                            </div>
-                        </div>
-                        
-                        <div class="flow-legend">
-                            <div class="flow-legend__item">
-                                <div class="flow-legend__color flow-legend__color--basic"></div>
-                                <span>貴社対応領域</span>
-                            </div>
-                            <div class="flow-legend__item">
-                                <div class="flow-legend__color flow-legend__color--highlight"></div>
-                                <span>弊社対応領域</span>
-                            </div>
+                            <div class="benefit-card__icon">🎁</div>
+                            <h3 class="benefit-card__title">無料＆優待価格で試せる</h3>
+                            <p class="benefit-card__description">テスター期間中は基本機能を無料でご提供。正式版リリース時には特別な優待価格で継続利用可能です。</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- 将来ビジョンセクション -->
-        <section class="future-vision" id="vision">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">2030年、すべての企業にAI顧問がいる世界</h2>
-                </div>
-                
-                <div class="vision__content">
-                    <div class="vision__description">
-                        <p class="vision__text">
-                            経営者は「この売上、何が原因だろう？」と自然言語で問いかけ、社内の文脈を理解したAIが即座に分析・提案を返す。
-                            マーケターは「データを見て解釈する」作業から解放され、「問いを立て、判断を下す」本質的な思考に集中できる。
-                        </p>
-                        
-                        <p class="vision__text">
-                            <strong>AIがマーケティングを代行する時代、プロダクトは「売り方」ではなく「本質」で評価されるようになる。
-                            みんながそのままで輝ける、本質勝負の世界の実現。</strong>
-                        </p>
-                    </div>
-                    
-                    <div class="vision__features">
-                        <h3 class="vision__subtitle">未来機能のプレビュー</h3>
-                        
-                        <div class="future-feature-cards">
-                            <div class="future-feature">
-                                <div class="future-feature__icon">🤵</div>
-                                <h4 class="future-feature__title">AI役職システム</h4>
-                                <p class="future-feature__description">
-                                    AI社長・AI部長・AI役員等の役職別AIモデル。
-                                    社内コミュニケーション革命で管理職コストを削減。
-                                </p>
-                            </div>
-                            
-                            <div class="future-feature">
-                                <div class="future-feature__icon">🔗</div>
-                                <h4 class="future-feature__title">Google Workspace完全統合</h4>
-                                <p class="future-feature__description">
-                                    Gmail、Docs、Sheets、PowerPoint等の自動格納RAG。
-                                    Google Workspaceとの完全連携。
-                                </p>
-                            </div>
-                            
-                            <div class="future-feature">
-                                <div class="future-feature__icon">💬</div>
-                                <h4 class="future-feature__title">チャット基盤連携</h4>
-                                <p class="future-feature__description">
-                                    Slack、LINE等の既存チャット基盤への連携オプション。
-                                    MCPを活用した他社ツール・メッセンジャー連携。
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
 
-        <!-- 会社情報・創業ストーリーセクション -->
-        <section class="company" id="company">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">私たちについて</h2>
-                </div>
-                
-                <div class="company__content">
-                    <div class="company__story">
-                        <div class="story-section">
-                            <h3 class="story-section__title">カボシアの由来</h3>
-                            <div class="story-section__content">
-                                <p class="story-text">
-                                    <strong>Cabocia（カボシア）</strong> = <strong>Cabocha（かぼちゃ）</strong> + <strong>Utopia（理想郷）</strong>
-                                </p>
-                                
-                                <p class="story-text">
-                                    人にはそれぞれ、いびつで、豊かで、可笑しみのある個性がある。かぼちゃって、実はその象徴だと思ってる。
-                                    形も色も違って、ゴツゴツして、でも中はぎゅっと詰まってる。ランタンになったり馬車になったり、用途も幅広い。
-                                </p>
-                                
-                                <p class="story-text">
-                                    そんな個性たちが生きやすい場所――理想郷。それがカボシア。
-                                </p>
-                                
-                                <p class="story-text">
-                                    <strong>ホウジンAIがマーケティングを代行する時代、プロダクトは「売り方」じゃなく「本質」で評価されるようになる。
-                                    多様な個性がそのままで輝ける世界をつくりたい。</strong>
-                                </p>
-                                
-                                <p class="story-highlight">
-                                    <strong>Cabocia = みんながそのままで輝ける世界。</strong>
-                                </p>
-                            </div>
-                        </div>
-                        
-                        <div class="story-section">
-                            <h3 class="story-section__title">ミッション・ビジョン</h3>
-                            <div class="mission-vision">
-                                <div class="mv-item">
-                                    <h4 class="mv-item__label">MISSION</h4>
-                                    <p class="mv-item__text">「ホウジン」がAIで意思決定できる世の中を作る</p>
-                                </div>
-                                
-                                <div class="mv-item">
-                                    <h4 class="mv-item__label">VISION</h4>
-                                    <p class="mv-item__text">経営者+AI顧問が当たり前の社会を実現する</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="company__team">
-                        <h3 class="company__team-title">代表者紹介</h3>
-                        
-                        <div class="team-members">
-                            <div class="team-member">
-                                <div class="team-member__photo">
-                                    <img src="assets/images/team/koike-riku.jpg" alt="小池陸" class="team-member__img">
-                                </div>
-                                <div class="team-member__info">
-                                    <h4 class="team-member__role">CEO/AIエンジニア</h4>
-                                    <h5 class="team-member__name">小池陸</h5>
-                                    <p class="team-member__bio">
-                                        大手人材会社を退職後、Shopify構築事業で独立。制作領域から販売領域まで一気通貫でサポートをしている。
-                                    </p>
-                                </div>
-                            </div>
-                            
-                            <div class="team-member">
-                                <div class="team-member__photo">
-                                    <img src="assets/images/team/nakato-tomohito.jpg" alt="中都智仁" class="team-member__img">
-                                </div>
-                                <div class="team-member__info">
-                                    <h4 class="team-member__role">CEO/マーケター</h4>
-                                    <h5 class="team-member__name">中都智仁</h5>
-                                    <p class="team-member__bio">
-                                        SaaS業界の広告運用責任者を経験したのち、GA4コンサルタントとして独立。統計手法を駆使した分析が得意。
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="company__values">
-                        <h3 class="company__values-title">5つのバリュー</h3>
-                        
-                        <div class="values-grid">
-                            <div class="value-item">
-                                <h4 class="value-item__title">本質主義</h4>
-                                <p class="value-item__description">「売り方」ではなく「本質」で評価される世界を創る</p>
-                            </div>
-                            
-                            <div class="value-item">
-                                <h4 class="value-item__title">個性尊重</h4>
-                                <p class="value-item__description">かぼちゃのように、それぞれ形も色も違う企業の個性を大切にする</p>
-                            </div>
-                            
-                            <div class="value-item">
-                                <h4 class="value-item__title">問いの力</h4>
-                                <p class="value-item__description">「見る力」よりも「問いを立てる力」を重視する</p>
-                            </div>
-                            
-                            <div class="value-item">
-                                <h4 class="value-item__title">AI協働</h4>
-                                <p class="value-item__description">AIでできることは全てAIに任せ、人間は本質的な価値創造に集中する</p>
-                            </div>
-                            
-                            <div class="value-item">
-                                <h4 class="value-item__title">主体性重視</h4>
-                                <p class="value-item__description">「自分ができることは何だろう」を考え続ける組織を目指す</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- FAQ セクション -->
         <section class="faq" id="faq">
             <div class="container">
                 <div class="section-header">
                     <h2 class="section-title">よくある質問</h2>
                 </div>
-                
                 <div class="faq__content">
                     <div class="faq-item">
                         <button class="faq-item__question">
@@ -881,13 +741,10 @@
                         </button>
                         <div class="faq-item__answer">
                             <p>
-                                申込みから数日で開始可能です。<br><br>
-                                お申し込み → アカウントの作成 → 管理画面からメッセージ生成 → Chrome拡張機能で送信<br><br>
-                                また、送信代行や追加リストが必要な場合は導入サポートさせていただきます。
+                                お申込みから2週間~1ヶ月で開始可能です。 お申し込み → 規約の同意 → 必要な権限の付与 → ダッシュボードのお渡し → AIの接続とAIチャットの利用開始。(各種権限の付与方法やAIチャットの追加方などは随時サポートさせていただきます。)
                             </p>
                         </div>
                     </div>
-                    
                     <div class="faq-item">
                         <button class="faq-item__question">
                             <span>料金体系はどのようになっていますか？</span>
@@ -895,12 +752,10 @@
                         </button>
                         <div class="faq-item__answer">
                             <p>
-                                成果報酬プランと月額固定プランがございます。<br><br>
-                                リストの保有状況、件数・商材によって変わりますので、詳細な料金については、営業担当にお気軽にお問い合わせください。
+                               成果報酬プランと月額固定プランがございます。 リストの保有状況、件数・商材によって変わりますので、詳細な料金については、お問い合わせください。
                             </p>
                         </div>
                     </div>
-                    
                     <div class="faq-item">
                         <button class="faq-item__question">
                             <span>どのようなデータソースと連携できますか？</span>
@@ -913,120 +768,214 @@
                             </p>
                         </div>
                     </div>
-                    
-                    <div class="faq-item">
-                        <button class="faq-item__question">
-                            <span>データのセキュリティは大丈夫ですか？</span>
-                            <span class="faq-item__icon">+</span>
-                        </button>
-                        <div class="faq-item__answer">
-                            <p>
-                                Google Cloud Platformの堅牢なセキュリティ基盤を使用しており、ISO27001、SOC2等の認証を取得しています。<br><br>
-                                顧客ごとにデータベースを分離したマルチテナント対応で、データの機密性を保護しています。
-                            </p>
-                        </div>
-                    </div>
-                    
-                    <div class="faq-item">
-                        <button class="faq-item__question">
-                            <span>テスターとして参加するメリットは何ですか？</span>
-                            <span class="faq-item__icon">+</span>
-                        </button>
-                        <div class="faq-item__answer">
-                            <p>
-                                テスター期間中は完全無料でご利用いただけます。また、早期参加者限定で環境構築を最短でサポートし、正式リリース後も特別価格でご利用いただけます。<br><br>
-                                プロダクトの改善にも直接ご参加いただけるため、よりニーズに合ったサービスをお使いいただけます。
-                            </p>
-                        </div>
-                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- お問い合わせフォームセクション -->
         <section class="contact" id="contact">
             <div class="container">
                 <div class="section-header">
-                    <h2 class="section-title">お問い合わせ</h2>
+                    <h2 class="section-title">お問い合わせ・テスターお申込み</h2>
                     <p class="section-description">
-                        テスター申込・資料請求・デモ依頼など、お気軽にお問い合わせください
+                        ホウジンAIに関するご質問、資料請求、デモ・テスターのお申込みはこちらからお願いいたします。
                     </p>
                 </div>
-                
                 <div class="contact__content">
-                    <form class="contact-form">
+                    <form class="contact-form" id="cabocia-contact-form"
+                          action="https://docs.google.com/forms/d/e/1FAIpQLScYP06MG-7SA9krTkJPBgvH5HGNmzQbI9zcRukWHciiWcfl1w/formResponse"
+                          method="POST" target="hidden_iframe" onsubmit="submitted=true; document.getElementById('submitButton').disabled=true; document.getElementById('submitButton').textContent='送信中...';">
+        
                         <div class="form-group">
-                            <label for="inquiry-type" class="form-label">お問い合わせ種別 <span class="required">*</span></label>
-                            <select id="inquiry-type" name="inquiry-type" class="form-select" required>
-                                <option value="">選択してください</option>
-                                <option value="tester">テスター申込</option>
-                                <option value="demo">デモ依頼</option>
-                                <option value="document">資料請求</option>
-                                <option value="consultation">導入相談</option>
-                                <option value="other">その他</option>
-                            </select>
+                            <label for="email" class="form-label">担当者の連絡用メールアドレス <span class="required">*</span></label>
+                            <input type="email" id="email" name="entry.1232192811" class="form-input" placeholder="例: your-email@example.com" required autocomplete="email">
+                            <p class="form-input-note">ご担当者様のメールアドレスをご入力ください。</p>
                         </div>
-                        
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="company-name" class="form-label">会社名 <span class="required">*</span></label>
-                                <input type="text" id="company-name" name="company-name" class="form-input" required>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="contact-name" class="form-label">ご担当者名 <span class="required">*</span></label>
-                                <input type="text" id="contact-name" name="contact-name" class="form-input" required>
-                            </div>
+        
+                        <div class="form-group">
+                            <label for="company-name" class="form-label">貴社名 <span class="required">*</span></label>
+                            <input type="text" id="company-name" name="entry.2129828903" class="form-input" placeholder="例: カボシア株式会社" required autocomplete="organization">
                         </div>
-                        
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="email" class="form-label">メールアドレス <span class="required">*</span></label>
-                                <input type="email" id="email" name="email" class="form-input" required>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="phone" class="form-label">電話番号</label>
-                                <input type="tel" id="phone" name="phone" class="form-input">
-                            </div>
+        
+                        <div class="form-group">
+                            <label for="contact-name" class="form-label">担当者名 <span class="required">*</span></label>
+                            <input type="text" id="contact-name" name="entry.877195359" class="form-input" placeholder="例: 山田 太郎" required autocomplete="name">
                         </div>
                         
                         <div class="form-group">
-                            <label for="data-usage" class="form-label">現在のデータ活用状況</label>
-                            <textarea id="data-usage" name="data-usage" class="form-textarea" rows="3" placeholder="現在利用されているツールや課題があれば教えてください"></textarea>
+                             <label class="form-label">連携を希望するツール <span class="required">*</span></label>
+                             <div class="form-checkbox-group">
+                                <label class="form-checkbox-stacked">
+                                    <input type="checkbox" name="entry.1829487839" value="Googleアナリティクス（GA4）">
+                                    <span class="form-checkbox__checkmark"></span><span class="form-checkbox__label-text">Googleアナリティクス（GA4）</span>
+                                </label>
+                                <label class="form-checkbox-stacked">
+                                    <input type="checkbox" name="entry.1829487839" value="Googleサーチコンソール">
+                                    <span class="form-checkbox__checkmark"></span><span class="form-checkbox__label-text">Googleサーチコンソール</span>
+                                </label>
+                                <label class="form-checkbox-stacked">
+                                    <input type="checkbox" name="entry.1829487839" value="Shopify">
+                                    <span class="form-checkbox__checkmark"></span><span class="form-checkbox__label-text">Shopify</span>
+                                </label>
+                                <label class="form-checkbox-stacked">
+                                    <input type="checkbox" name="entry.1829487839" value="Google広告">
+                                    <span class="form-checkbox__checkmark"></span><span class="form-checkbox__label-text">Google広告</span>
+                                </label>
+                                <label class="form-checkbox-stacked">
+                                    <input type="checkbox" name="entry.1829487839" value="Meta広告">
+                                    <span class="form-checkbox__checkmark"></span><span class="form-checkbox__label-text">Meta広告</span>
+                                </label>
+                                <label class="form-checkbox-stacked">
+                                    <input type="checkbox" name="entry.1829487839" value="Amazon（セラーセントラル、Amazon広告）">
+                                    <span class="form-checkbox__checkmark"></span><span class="form-checkbox__label-text">Amazon（セラーセントラル、Amazon広告）</span>
+                                </label>
+                                <div class="form-checkbox-stacked form-checkbox-other">
+                                    <label for="checkbox_other_tool_trigger" class="form-checkbox-label-wrapper">
+                                        <input type="checkbox" name="entry.1829487839" value="__other_option__" id="checkbox_other_tool_trigger">
+                                        <span class="form-checkbox__checkmark"></span>
+                                        <span class="form-checkbox__label-text">その他:</span>
+                                    </label>
+                                    <input type="text" name="entry.1829487839.other_option_response" class="form-input form-input--inline" placeholder="具体的なツール名(複数可)" disabled>
+                                </div>
+                             </div>
                         </div>
-                        
+        
                         <div class="form-group">
-                            <label for="message" class="form-label">ご相談内容・ご質問</label>
-                            <textarea id="message" name="message" class="form-textarea" rows="5" placeholder="具体的なご相談内容やご質問がございましたらお聞かせください"></textarea>
+                            <label class="form-label">LookerStudioによるダッシュボード化を希望しますか？ <span class="required">*</span></label>
+                            <div class="form-radio-group">
+                                <label class="form-radio">
+                                    <input type="radio" name="entry.1103622489" value="希望する（ダッシュボードも見たい！）" required>
+                                    <span class="form-radio__mark"></span><span class="form-radio__label">希望する（ダッシュボードも見たい！）</span>
+                                </label>
+                                <label class="form-radio">
+                                    <input type="radio" name="entry.1103622489" value="希望しない（データの蓄積だけで良い！）">
+                                    <span class="form-radio__mark"></span><span class="form-radio__label">希望しない（データの蓄積だけで良い！）</span>
+                                </label>
+                            </div>
                         </div>
-                        
+        
                         <div class="form-group">
-                            <label class="form-checkbox">
-                                <input type="checkbox" name="privacy-agreement" required>
-                                <span class="form-checkbox__checkmark"></span>
-                                <span class="form-checkbox__text">
-                                    <a href="#" target="_blank">プライバシーポリシー</a>に同意する <span class="required">*</span>
-                                </span>
-                            </label>
+                            <label class="form-label">生成AI連携による貴社専用AIコンサルタントを希望しますか？ <span class="required">*</span></label>
+                            <div class="form-radio-group">
+                                <label class="form-radio">
+                                    <input type="radio" name="entry.1317465933" value="希望する" required>
+                                    <span class="form-radio__mark"></span><span class="form-radio__label">希望する</span>
+                                </label>
+                                <label class="form-radio">
+                                    <input type="radio" name="entry.1317465933" value="希望しない（データの蓄積だけで良い！）">
+                                    <span class="form-radio__mark"></span><span class="form-radio__label">希望しない（データの蓄積だけで良い！）</span>
+                                </label>
+                            </div>
                         </div>
-                        
+        
+                        <div class="form-group">
+                            <label for="message" class="form-label">このテスターで期待していることは何ですか？ざっくばらんにお書きください。（例：AIによる示唆が欲しい！施策の効果検証がしたい！）</label>
+                            <textarea id="message" name="entry.358629773" class="form-textarea" rows="6" placeholder="期待することをご自由にご記入ください。"></textarea>
+                        </div>
+        
+                        <div class="form-group">
+                            <label for="additional-questions" class="form-label">現状でご質問がございましたらお気軽にご質問ください。</label>
+                            <textarea id="additional-questions" name="entry.2091509264" class="form-textarea" rows="4" placeholder="その他ご不明点などございましたらご記入ください。"></textarea>
+                        </div>
+        
+                        <div class="form-group">
+                            <label class="form-label">テスター利用に関する同意事項 <span class="required">*</span></label>
+                            <div class="form-text-description">
+                                <p>現在開発中のプロダクトになります。ご要望に全てお応えできない可能性がある旨、あらかじめご了承ください。</p>
+                                <p>また、当サービスは、場合によってはお客様のデータを取り扱うツールとなります。そのため、テスター環境であっても「契約書」と「NDA（秘密保持契約）」をご用意しており、締結を推奨しております。ただし、<strong>GA4のデータのみをご利用の場合</strong>で、顧客情報を一切扱わないケースに限り、<strong>契約書の取り交わしは不要</strong>とし、<a href="https://docs.google.com/document/d/1PPXk_jhDNajCkpLV3z-u1I2B3JScNO1D1nwQZHhKarQ/edit?tab=t.0" target="_blank" rel="noopener noreferrer">利用規約</a>への同意のみで進めることも可能です。</p>
+                            </div>
+                            <div class="form-radio-group">
+                                <label class="form-radio">
+                                    <input type="radio" name="entry.340931157" value="顧客実名データを含むので契約書を取り交わす（利用規約のご確認は任意です）" required>
+                                    <span class="form-radio__mark"></span><span class="form-radio__label">顧客実名データを含むので契約書を取り交わす（利用規約のご確認は任意です）</span>
+                                </label>
+                                <label class="form-radio">
+                                    <input type="radio" name="entry.340931157" value="顧客実名データを含まないので利用規約のみで申し込む（利用規約に同意しました）">
+                                    <span class="form-radio__mark"></span><span class="form-radio__label">顧客実名データを含まないので利用規約のみで申し込む（利用規約に同意しました）</span>
+                                </label>
+                            </div>
+                        </div>
+        
+                        <div class="form-group">
+                            <label class="form-label">事例協力について <span class="required">*</span></label>
+                            <div class="form-text-description">
+                                <p>事例企業様を全力で探しております。価値を感じていただけた場合に事例としてご協力いただけそうでしょうか。（細かいデータの公開はありません）</p>
+                            </div>
+                            <div class="form-radio-group">
+                                <label class="form-radio">
+                                    <input type="radio" name="entry.515309877" value="実名での事例OKです" required>
+                                    <span class="form-radio__mark"></span><span class="form-radio__label">実名での事例OKです</span>
+                                </label>
+                                <label class="form-radio">
+                                    <input type="radio" name="entry.515309877" value="匿名であれば事例OKです">
+                                    <span class="form-radio__mark"></span><span class="form-radio__label">匿名であれば事例OKです</span>
+                                </label>
+                                <label class="form-radio">
+                                    <input type="radio" name="entry.515309877" value="実名・匿名ともに事例NGです">
+                                    <span class="form-radio__mark"></span><span class="form-radio__label">実名・匿名ともに事例NGです</span>
+                                </label>
+                            </div>
+                        </div>
+        
                         <div class="form-actions">
-                            <button type="submit" class="btn btn--primary btn--large">送信する</button>
+                            <button type="submit" id="submitButton" class="btn btn--primary btn--large">上記内容で送信する</button>
                         </div>
+        
+                        <div id="form-response-message" style="margin-top: 1rem; text-align: center; display: none; padding: 1rem; border-radius: var(--border-radius-md);"></div>
                     </form>
-                    
+                    <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="handleFormSubmitResponse()"></iframe>
+        
+                    <script>
+                        var submitted = false; // iframeのonloadで参照するためグローバルに定義
+                        function handleFormSubmitResponse() {
+                            if (submitted) {
+                                const form = document.getElementById('cabocia-contact-form');
+                                const responseMessage = document.getElementById('form-response-message');
+                                const submitButton = document.getElementById('submitButton');
+        
+                                responseMessage.textContent = 'お申込みありがとうございます。担当者よりご連絡いたします。';
+                                responseMessage.style.display = 'block';
+                                // CSS変数を使用してスタイルを設定 (variables.cssで定義されている想定)
+                                responseMessage.style.backgroundColor = 'var(--color-success-lighter, #e6fffa)';
+                                responseMessage.style.color = 'var(--color-success-dark, #00704e)'; // より濃い色で見やすく
+                                responseMessage.style.border = '1px solid var(--color-success, #38a169)';
+        
+        
+                                form.reset();
+                                if(submitButton) { // ボタンが存在する場合のみ操作
+                                    submitButton.disabled = false;
+                                    submitButton.textContent = '上記内容で送信する';
+                                }
+                                
+                                responseMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                                submitted = false;
+                            }
+                        }
+        
+                        const otherToolCheckbox = document.getElementById('checkbox_other_tool_trigger');
+                        const otherToolInput = document.querySelector('input[name="entry.1829487839.other_option_response"]');
+                        if (otherToolCheckbox && otherToolInput) {
+                            otherToolCheckbox.addEventListener('change', function() {
+                                otherToolInput.disabled = !this.checked;
+                                if (!this.checked) {
+                                    otherToolInput.value = '';
+                                } else {
+                                    otherToolInput.focus();
+                                }
+                            });
+                        }
+                    </script>
+        
                     <div class="contact__info">
-                        <div class="contact-info">
-                            <h3 class="contact-info__title">お問い合わせ先</h3>
+                         <div class="contact-info">
+                            <h3 class="contact-info__title">カボシア株式会社</h3>
                             <p class="contact-info__item">
-                                <strong>Email:</strong> info@shop-report.net
+                                法人の意思決定に、AIの力を。
                             </p>
                             <p class="contact-info__item">
-                                <strong>会社名:</strong> カボシア株式会社
+                                Email: <a href="mailto:info@cabocia.inc">info@cabocia.inc</a>
                             </p>
                             <p class="contact-info__item">
-                                <strong>所在地:</strong> 東京都
+                                （お問い合わせフォームからもご連絡いただけます）
                             </p>
                         </div>
                     </div>
@@ -1035,7 +984,6 @@
         </section>
     </main>
 
-    <!-- フッター -->
     <footer class="footer">
         <div class="container">
             <div class="footer__content">
@@ -1044,41 +992,35 @@
                         <img src="assets/images/logo/cabocia-logo.svg" alt="カボシア株式会社" class="footer__logo-img">
                     </div>
                     <p class="footer__description">
-                        みんながそのままで輝ける世界を実現する。<br>
                         法人の意思決定は、AIで。
                     </p>
                 </div>
-                
                 <div class="footer__links">
                     <div class="footer__section">
                         <h4 class="footer__section-title">プロダクト</h4>
                         <ul class="footer__list">
-                            <li><a href="#product" class="footer__link">ホウジンAI</a></li>
+                            <li><a href="#product" class="footer__link">ホウジンAIとは</a></li>
                             <li><a href="#pricing" class="footer__link">料金プラン</a></li>
-                            <li><a href="#tester" class="footer__link">テスター募集</a></li>
+                            <li><a href="#faq" class="footer__link">よくある質問</a></li>
                         </ul>
                     </div>
-                    
+                    <div class="footer__section">
+                        <h4 class="footer__section-title">サポート</h4>
+                        <ul class="footer__list">
+                             <li><a href="#contact" class="footer__link">資料請求</a></li>
+                            <li><a href="#contact" class="footer__link">お問い合わせ</a></li>
+                            </ul>
+                    </div>
                     <div class="footer__section">
                         <h4 class="footer__section-title">会社情報</h4>
                         <ul class="footer__list">
-                            <li><a href="#company" class="footer__link">私たちについて</a></li>
-                            <li><a href="#vision" class="footer__link">ビジョン</a></li>
-                            <li><a href="#contact" class="footer__link">お問い合わせ</a></li>
-                        </ul>
-                    </div>
-                    
-                    <div class="footer__section">
-                        <h4 class="footer__section-title">リーガル</h4>
-                        <ul class="footer__list">
-                            <li><a href="#" class="footer__link">利用規約</a></li>
+                            <li><a href="#" class="footer__link">運営会社</a></li> <li><a href="#" class="footer__link">利用規約</a></li>
                             <li><a href="#" class="footer__link">プライバシーポリシー</a></li>
-                            <li><a href="#" class="footer__link">特定商取引法</a></li>
+                            <li><a href="#" class="footer__link">特定商取引法に基づく表記</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
-            
             <div class="footer__bottom">
                 <p class="footer__copyright">
                     © 2024 Cabocia Co., Ltd. All Rights Reserved.
@@ -1087,9 +1029,23 @@
         </div>
     </footer>
 
-    <!-- JavaScript -->
-    <script src="assets/js/main.js"></script>
+    <!-- <script src="assets/js/main.js"></script>
     <script src="assets/js/animations.js"></script>
-    <script src="assets/js/form.js"></script>
+    <script src="assets/js/form.js"></script> -->
+    <!-- メイン初期化スクリプト -->
+    <script src="assets/js/main.js"></script>
+    <!-- セクション別スクリプト -->
+    <script src="assets/js/sections/hero.js"></script>
+    <script src="assets/js/sections/product.js"></script>
+    <script src="assets/js/sections/challenges.js"></script>
+    <script src="assets/js/sections/differentiation.js"></script>
+    <script src="assets/js/sections/value-proposition.js"></script>
+    <script src="assets/js/sections/pricing.js"></script>
+    <script src="assets/js/sections/tester-recruitment.js"></script>
+    <script src="assets/js/sections/faq.js"></script>
+    <script src="assets/js/sections/contact.js"></script>
+
+    <script src="assets/js/sections/header.js"></script>
+    <script src="assets/js/sections/footer.js"></script>
 </body>
 </html>

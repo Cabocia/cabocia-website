@@ -1,0 +1,191 @@
+/* ===== FAQ Section ===== */
+
+.faq {
+  background: linear-gradient(135deg, var(--color-gray-50) 0%, var(--color-white) 100%);
+  padding: var(--spacing-5xl) 0; /* 上下のパディングを少し広めに */
+  position: relative;
+  overflow: hidden; /* ::before要素がはみ出ないように */
+}
+
+/* セクション上部の区切り線（オプション） */
+.faq::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 5%; /* 中央に寄せるために左右に余白 */
+  right: 5%;
+  width: 90%;
+  height: 1px;
+  background: var(--color-gray-200); /* 少し薄い区切り線 */
+  opacity: 0.7;
+}
+
+.faq .section-header {
+  margin-bottom: var(--spacing-4xl); /* 他セクションとの統一感を考慮 */
+}
+
+/* .faq .section-title は components.css または共通スタイルで定義されている想定 */
+/* .faq .section-description も同様 */
+
+.faq__content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.faq-item {
+  background: var(--color-white);
+  border-radius: var(--border-radius-lg);
+  margin-bottom: var(--spacing-lg);
+  box-shadow: var(--shadow-md);
+  transition: box-shadow var(--transition-normal), transform var(--transition-normal), border-color var(--transition-fast);
+  border: 1px solid var(--color-gray-200);
+  /* アニメーションの初期状態 (JSで制御) */
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.faq-item.animate-in { /* JSで付与するクラス */
+    opacity: 1;
+    transform: translateY(0);
+    /* transition はCSSの .faq-item 自体に定義されているものを利用 */
+}
+
+
+.faq-item:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-4px); /* ホバー時に少し浮き上がる */
+}
+
+.faq-item.faq-item--open { /* JavaScriptで開閉時にこのクラスを付与 */
+  border-color: var(--color-primary); /* 開いたときに枠線の色を変更 */
+  box-shadow: 0 8px 25px rgba(255, 140, 0, 0.15); /* 開いたときの影をより目立たせる */
+}
+
+.faq-item__question {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-lg) var(--spacing-xl);
+  background: transparent; /* 初期背景は透明 */
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+  position: relative; /* ::before擬似要素のため */
+  border-radius: var(--border-radius-lg); /* ボタン自体にも角丸を適用 */
+}
+
+/* 質問文の左側のインジケーター */
+.faq-item__question::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background-color: var(--color-gray-200);
+  border-top-left-radius: var(--border-radius-lg); /* 親要素の角丸に合わせる */
+  border-bottom-left-radius: var(--border-radius-lg);
+  transition: background-color var(--transition-fast);
+}
+
+.faq-item.faq-item--open .faq-item__question::before {
+  background-color: var(--color-primary);
+}
+
+.faq-item__question:hover {
+  background-color: var(--color-gray-50);
+}
+
+.faq-item.faq-item--open .faq-item__question {
+  color: var(--color-primary-dark); /* 開いたときに質問文の色を少し濃く */
+  background-color: rgba(255, 140, 0, 0.03); /* 開いたときの背景を薄くオレンジに */
+}
+
+.faq-item__icon {
+  font-size: var(--font-size-lg); /* アイコンサイズはフォントに依存 */
+  color: var(--color-primary);
+  transition: transform 0.3s ease-in-out, color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  width: 30px;   /* アイコンのコンテナサイズ */
+  height: 30px;  /* アイコンのコンテナサイズ */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--border-radius-full);
+  background-color: transparent; /* 初期状態では背景なし */
+  flex-shrink: 0;
+  font-weight: var(--font-weight-bold); /* アイコンの見た目を少し強調 */
+  line-height: 1; /* アイコンの垂直中央揃えのため */
+}
+
+.faq-item__question:hover .faq-item__icon {
+  background-color: rgba(255, 140, 0, 0.1); /* 質問ホバー時にアイコン背景 */
+}
+
+.faq-item.faq-item--open .faq-item__icon {
+  transform: rotate(135deg); /* 「+」から「×」への変化 */
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+.faq-item__answer {
+  padding: 0 var(--spacing-xl) 0 var(--spacing-xl); /* 初期は上下パディング0 */
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-relaxed);
+  height: 0; /* 初期状態は高さ0 */
+  opacity: 0; /* 初期状態は透明 */
+  overflow: hidden;
+  transition: height 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity 0.3s ease-out 0.05s, /* opacityはheightのアニメーションより少し遅れて開始/完了 */
+              padding-top 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+              padding-bottom 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+              border-top-color 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  font-size: var(--font-size-base);
+  border-top: 1px solid transparent;
+  display: block; /* scrollHeight を正しく取得するために必要 */
+}
+
+.faq-item.faq-item--open .faq-item__answer {
+  /* height はJSで動的に設定 */
+  opacity: 1;
+  padding-top: var(--spacing-md);
+  padding-bottom: var(--spacing-xl);
+  border-top-color: var(--color-gray-200);
+}
+
+.faq-item__answer p {
+  margin: 0; /* デフォルトのpマージンをリセット */
+  line-height: var(--line-height-relaxed);
+}
+
+.faq-item__answer p + p { /* 回答内の連続する段落間のスペース */
+    margin-top: var(--spacing-md);
+}
+
+/* レスポンシブ対応 */
+@media (max-width: var(--breakpoint-sm)) {
+  .faq {
+    padding: var(--spacing-4xl) 0;
+  }
+  .faq-item__question {
+    padding: var(--spacing-md) var(--spacing-lg);
+    font-size: var(--font-size-base); /* モバイルでは少し小さく */
+  }
+  .faq-item__icon {
+    width: 26px;
+    height: 26px;
+    font-size: var(--font-size-base);
+  }
+  .faq-item__answer {
+    padding: 0 var(--spacing-lg) 0 var(--spacing-lg);
+    font-size: var(--font-size-sm); /* モバイルでは少し小さく */
+  }
+  .faq-item.faq-item--open .faq-item__answer {
+    padding-top: var(--spacing-sm);
+    padding-bottom: var(--spacing-lg);
+  }
+}

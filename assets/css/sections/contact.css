@@ -1,0 +1,441 @@
+/* ===== Contact Section ===== */
+
+.contact {
+  background-color: var(--color-bg-secondary); /* 少し色味のある背景 */
+  padding: var(--spacing-5xl) 0;
+  position: relative;
+}
+
+.contact::before { /* 上部の区切り線 */
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 5%;
+  right: 5%;
+  width: 90%;
+  height: 1px;
+  background: var(--color-gray-200);
+  opacity: 0.7;
+}
+
+.contact .section-header {
+  margin-bottom: var(--spacing-4xl);
+}
+
+.contact__content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-4xl);
+  max-width: 1100px; /* 少し広めに */
+  margin: 0 auto;
+}
+
+@media (min-width: 1024px) {
+  .contact__content {
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); /* フォームを少し広めに */
+    gap: var(--spacing-5xl);
+  }
+}
+
+/* Form Styles */
+.contact-form {
+  background: var(--color-white);
+  border-radius: var(--border-radius-xl); /* components.css に合わせる */
+  padding: var(--spacing-3xl);
+  box-shadow: var(--shadow-lg); /* components.css に合わせる */
+  border: 1px solid var(--color-gray-200);
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-form::before { /* カード上部のアクセントライン */
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px; /* 少し太く */
+  background: var(--gradient-primary);
+}
+
+.form-group {
+  margin-bottom: var(--spacing-xl);
+}
+
+.form-row { /* 2カラムレイアウト用 */
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-lg);
+}
+
+@media (min-width: 640px) {
+  .form-row {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.form-label {
+  display: block;
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-sm);
+  font-size: var(--font-size-base);
+}
+
+.required {
+  color: var(--color-error);
+  margin-left: var(--spacing-xs);
+  font-weight: var(--font-weight-normal); /* 強調しすぎないように */
+}
+
+.form-input,
+.form-select, /* selectタグは現在使用していませんが、将来のため残します */
+.form-textarea {
+  width: 100%;
+  padding: var(--spacing-md) var(--spacing-lg);
+  border: 1px solid var(--color-gray-300); /* 境界線を少し細く */
+  border-radius: var(--border-radius-lg);
+  font-size: var(--font-size-base);
+  font-family: inherit;
+  background: var(--color-white);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  box-shadow: var(--shadow-sm); /* わずかな影 */
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(255, 140, 0, 0.2); /* フォーカスリングを少し太く、色を調整 */
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: var(--color-gray-500);
+  opacity: 0.8;
+}
+
+.form-input-note { /* 入力フィールド下の補足説明 */
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  margin-top: var(--spacing-xs);
+  line-height: var(--line-height-snug);
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 100px; /* 少し小さく */
+  line-height: var(--line-height-relaxed);
+}
+
+/* Radio Button Group Styles */
+.form-radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0px; /* ラジオボタン間のスペース */
+}
+
+.form-radio {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: var(--spacing-sm) 0; /* 上下パディングでタッチしやすく */
+  position: relative;
+}
+
+.form-radio input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.form-radio__mark {
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--color-gray-400);
+  border-radius: 50%;
+  margin-right: var(--spacing-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color var(--transition-fast), background-color var(--transition-fast);
+  flex-shrink: 0; /* サイズが潰れないように */
+}
+
+.form-radio__mark::after { /* 内側の円 */
+  content: '';
+  width: 10px;
+  height: 10px;
+  background-color: var(--color-primary);
+  border-radius: 50%;
+  transform: scale(0);
+  transition: transform var(--transition-fast);
+}
+
+.form-radio input[type="radio"]:checked + .form-radio__mark {
+  border-color: var(--color-primary);
+}
+
+.form-radio input[type="radio"]:checked + .form-radio__mark::after {
+  transform: scale(1);
+}
+
+.form-radio input[type="radio"]:focus-visible + .form-radio__mark {
+  outline: 2px solid var(--color-primary-light); /* variables.css に --color-primary-light がある想定 */
+  outline-offset: 2px;
+}
+
+.form-radio__label {
+  font-size: var(--font-size-base);
+  color: var(--color-text-primary);
+  line-height: var(--line-height-snug);
+}
+
+/* Checkbox Group Styles (for "連携を希望するツール") */
+.form-checkbox-group {
+  display: grid;
+  grid-template-columns: 1fr; /* モバイルでは1列 */
+  gap: var(--spacing-sm);
+}
+
+@media (min-width: 600px) { /* ある程度の幅で2列に */
+  .form-checkbox-group {
+    grid-template-columns: repeat(1, 1fr);
+    gap: var(--spacing-md) var(--spacing-lg); /* 行間と列間 */
+  }
+}
+@media (min-width: 800px) { /* さらに幅があれば3列に */
+    .form-checkbox-group {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+
+
+.form-checkbox-stacked {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-xs) 0;
+  /* cursor: pointer; は個別のラベルやチェックボックスのラッパーに設定するため、ここからは削除しても良い */
+}
+
+/* 「その他」のチェックボックスとラベル、テキスト入力を含む全体のコンテナ */
+.form-checkbox-other {
+  display: flex;
+  flex-wrap: wrap; /* 幅が足りない場合に折り返すように */
+  align-items: center; /* 要素を垂直方向中央に揃える */
+  gap: var(--spacing-sm); /* 要素間のスペース */
+}
+
+/* チェックボックスと「その他:」ラベルを囲むラッパー */
+.form-checkbox-label-wrapper {
+  display: inline-flex; /* チェックマークと「その他:」テキストを横並びにする */
+  align-items: center;
+  gap: var(--spacing-sm);
+  cursor: pointer; /* このラベル部分をクリック可能にする */
+  flex-shrink: 0; /* テキスト入力欄に押されて縮まないように */
+}
+
+/* .form-checkbox__checkmark と .form-checkbox__label-text は前回と同様でOK */
+
+.form-input--inline { /* 「その他」のテキスト入力用 */
+  flex-grow: 1; /* 利用可能な残りのスペースを埋める */
+  min-width: 180px; /* テキスト入力欄の最小幅を少し広げる */
+  padding: var(--spacing-sm) var(--spacing-md);
+}
+.form-input--inline:disabled {
+    background-color: var(--color-gray-100);
+    cursor: not-allowed;
+}
+
+
+.form-checkbox-stacked input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* 既存の .form-checkbox__checkmark スタイルを流用 */
+.form-checkbox__checkmark {
+  width: 20px; /* ラジオボタンのマークとサイズを合わせる */
+  height: 20px;
+  border: 2px solid var(--color-gray-400);
+  border-radius: var(--border-radius-sm); /* 四角いチェックボックス */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color var(--transition-fast), background-color var(--transition-fast);
+  flex-shrink: 0;
+  background-color: var(--color-white);
+}
+
+.form-checkbox-stacked input[type="checkbox"]:checked + .form-checkbox__checkmark {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.form-checkbox-stacked input[type="checkbox"]:checked + .form-checkbox__checkmark::after {
+  content: '✔'; /* チェックマーク */
+  color: var(--color-white);
+  font-size: 14px; /* チェックマークのサイズ */
+  font-weight: var(--font-weight-bold);
+}
+
+.form-checkbox-stacked input[type="checkbox"]:focus-visible + .form-checkbox__checkmark {
+  outline: 2px solid var(--color-primary-light);
+  outline-offset: 2px;
+}
+
+.form-checkbox__label-text { /* チェックボックスのラベルテキスト */
+  font-size: var(--font-size-base);
+  color: var(--color-text-primary);
+  line-height: var(--line-height-snug);
+}
+
+.form-checkbox-other { /* 「その他」のチェックボックスとテキスト入力のコンテナ */
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap; /* 幅が足りない場合に折り返す */
+}
+
+.form-input--inline { /* 「その他」のテキスト入力用 */
+  flex-grow: 1; /* 残りのスペースを埋める */
+  min-width: 150px; /* 最小幅 */
+  padding: var(--spacing-sm) var(--spacing-md); /* 少し小さめのパディング */
+}
+.form-input--inline:disabled {
+    background-color: var(--color-gray-100);
+    cursor: not-allowed;
+}
+
+/* 説明文（テスター利用に関する同意事項など） */
+.form-text-description {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-relaxed);
+  background-color: var(--color-gray-50);
+  padding: var(--spacing-md);
+  border-radius: var(--border-radius-md);
+  margin-bottom: var(--spacing-md);
+}
+.form-text-description p {
+    margin-bottom: var(--spacing-sm);
+}
+.form-text-description p:last-child {
+    margin-bottom: 0;
+}
+.form-text-description a {
+    color: var(--color-primary);
+    text-decoration: underline;
+}
+.form-text-description a:hover {
+    text-decoration: none;
+}
+
+
+/* 個人情報同意のチェックボックス（既存の .form-checkbox を利用） */
+.form-checkbox { /* 元のプライバシーポリシー同意用 */
+  display: flex;
+  align-items: flex-start; /* テキストが複数行になる場合を考慮 */
+  gap: var(--spacing-md);
+  cursor: pointer;
+  padding: var(--spacing-sm) 0;
+}
+/* .form-checkbox input[type="checkbox"] は .form-checkbox-stacked と共通の隠しスタイル */
+/* .form-checkbox__checkmark は .form-checkbox-stacked と共通のスタイルを使用 */
+.form-checkbox__text {
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text-secondary);
+}
+.form-checkbox__text a {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+.form-checkbox__text a:hover {
+  text-decoration: none;
+}
+
+
+.form-actions {
+  margin-top: var(--spacing-xl);
+  text-align: center; /* ボタンを中央寄せ */
+}
+
+.form-actions .btn {
+  min-width: 200px; /* ボタンの最小幅 */
+}
+
+/* 送信結果メッセージ */
+#form-response-message {
+  margin-top: var(--spacing-lg);
+  padding: var(--spacing-md);
+  border-radius: var(--border-radius-md);
+  font-weight: var(--font-weight-medium);
+}
+
+/* Contact Info Styles */
+.contact__info {
+  display: flex;
+  align-items: flex-start; /* 上揃え */
+}
+
+.contact-info {
+  background: var(--color-white);
+  border-radius: var(--border-radius-xl);
+  padding: var(--spacing-2xl);
+  box-shadow: var(--shadow-lg);
+  width: 100%;
+  border: 1px solid var(--color-gray-200);
+}
+
+.contact-info__title {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-lg);
+  padding-bottom: var(--spacing-sm);
+  border-bottom: 2px solid var(--color-primary); /* タイトル下にアクセント */
+  display: inline-block; /* border-bottomがテキスト幅になるように */
+}
+
+.contact-info__item {
+  margin-bottom: var(--spacing-md);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-relaxed);
+  font-size: var(--font-size-base);
+}
+
+.contact-info__item strong {
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-medium);
+}
+.contact-info__item a {
+    color: var(--color-primary);
+    text-decoration: none;
+    word-break: break-all; /* 長いメールアドレスがはみ出ないように */
+}
+.contact-info__item a:hover {
+    text-decoration: underline;
+}
+
+
+/* レスポンシブ対応 */
+@media (max-width: var(--breakpoint-sm)) {
+  .contact {
+    padding: var(--spacing-4xl) 0;
+  }
+  .contact-form {
+    padding: var(--spacing-2xl);
+  }
+  .form-input, .form-textarea, .form-radio__label, .form-checkbox__label-text, .form-checkbox__text {
+    font-size: var(--font-size-sm); /* モバイルではフォーム要素のフォントを少し小さく */
+  }
+  .form-checkbox-group {
+    grid-template-columns: 1fr; /* モバイルでは必ず1列 */
+  }
+}

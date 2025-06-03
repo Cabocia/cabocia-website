@@ -1,0 +1,393 @@
+/* ===== Header Section ===== */
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--z-index-fixed, 1050); /* z-index 変数がない場合のフォールバック値 */
+  background: rgba(var(--color-bg-primary-rgb, 255, 255, 255), 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--color-gray-200, #eeeeee);
+  transition: background-color var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
+  transform: translateY(0);
+}
+
+.header--loaded {
+    /* ロゴなどの初期アニメーション完了後にJSで付与されるクラス（必要に応じてスタイル定義） */
+}
+
+.header--scrolled {
+  background: rgba(var(--color-bg-primary-rgb, 255, 255, 255), 0.98);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+  border-bottom-color: var(--color-gray-300, #e0e0e0);
+}
+
+.header--hidden {
+  transform: translateY(-100%);
+}
+
+/* ナビゲーション */
+.nav {
+  width: 100%;
+  height: 70px;
+  display: flex;
+  align-items: center;
+}
+
+.nav__container {
+  width: 100%;
+  max-width: var(--container-xl, 1280px);
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg, 1.5rem);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-xl, 2rem);
+}
+
+@media (min-width: 1024px) {
+  .nav__container {
+    padding: 0 var(--spacing-2xl, 2.5rem);
+  }
+}
+
+/* ロゴ */
+.nav__logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  flex-shrink: 0;
+  transition: transform var(--transition-fast);
+}
+
+.nav__logo:hover {
+  transform: scale(1.02);
+}
+
+.nav__logo-img {
+  height: 40px;
+  width: auto;
+  object-fit: contain;
+  /* 初期opacityはJSで制御される .loading-animation クラスを想定 */
+}
+
+@media (min-width: 768px) {
+  .nav__logo-img {
+    height: 44px;
+  }
+}
+
+/* ナビゲーションメニュー (PC) */
+.nav__menu {
+  display: none;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: var(--spacing-xl, 2rem);
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .nav__menu {
+    display: flex;
+  }
+}
+
+.nav__item {
+  position: relative;
+}
+
+.nav__link {
+  display: block;
+  font-size: var(--font-size-base, 1rem);
+  font-weight: var(--font-weight-medium, 500);
+  color: var(--color-text-primary, #212121);
+  text-decoration: none;
+  padding: var(--spacing-md, 1rem) var(--spacing-sm, 0.5rem);
+  border-radius: var(--border-radius-md, 0.375rem);
+  transition: color var(--transition-fast), background-color var(--transition-fast);
+  position: relative;
+  overflow: hidden;
+}
+
+.nav__link::before {
+  content: '';
+  position: absolute;
+  bottom: 5px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--gradient-primary, linear-gradient(135deg, #ff8c00 0%, #ff6b35 100%));
+  transition: width var(--transition-normal) ease-out;
+  transform: translateX(-50%);
+  border-radius: 2px;
+}
+
+.nav__link:hover,
+.nav__link:focus-visible {
+  color: var(--color-primary, #ff8c00);
+  background-color: rgba(var(--color-primary-rgb, 255, 140, 0), 0.05);
+}
+
+.nav__link:hover::before,
+.nav__link:focus-visible::before {
+  width: calc(100% - var(--spacing-md, 1rem));
+}
+
+.nav__link:active {
+  transform: translateY(1px);
+}
+
+/* ナビゲーションアクション (PCのボタン) */
+.nav__actions {
+  display: none;
+  align-items: center;
+  gap: var(--spacing-lg, 1.5rem);
+  flex-shrink: 0;
+}
+
+@media (min-width: 1024px) {
+  .nav__actions {
+    display: flex;
+  }
+}
+
+/* モバイルメニュートグル */
+.nav__mobile-toggle {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 44px;
+  height: 44px;
+  background: transparent;
+  border: none; /* 初期はボーダーなし */
+  cursor: pointer;
+  padding: var(--spacing-sm, 0.5rem);
+  border-radius: var(--border-radius-md, 0.375rem);
+  transition: background-color var(--transition-fast);
+  position: relative;
+  /* ★重要: モバイルメニューやオーバーレイよりも高いz-indexを確保 */
+  z-index: var(--z-index-modal, 1050); /* variables.cssの定義を優先 */
+}
+
+@media (min-width: 1024px) {
+  .nav__mobile-toggle {
+    display: none;
+  }
+}
+
+.nav__mobile-toggle:hover {
+  background-color: rgba(var(--color-text-primary-rgb, 33, 33, 33), 0.05);
+}
+
+.nav__mobile-toggle:focus-visible {
+  outline: 2px solid var(--color-primary, #ff8c00);
+  outline-offset: 2px;
+  box-shadow: none; /* 既存のbox-shadowを打ち消す場合 */
+}
+
+.nav__mobile-toggle span {
+  display: block;
+  width: 24px; /* 線の長さ */
+  height: 3px;  /* 線の太さ */
+  background-color: var(--color-text-primary, #212121);
+  border-radius: 3px;
+  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  transform-origin: center;
+}
+
+
+/* メニューオープン時のハンバーガーアニメーション（バツ印） */
+.nav__mobile-toggle--open span {
+  background-color: #333;
+}
+
+.nav__mobile-toggle--open span:nth-child(1) {
+  /* 線の太さ(3px)と線間のスペースを考慮して調整 */
+  /* 例: translateYの値を少し小さくする (元の7pxから調整) */
+  transform: translateY(12px) rotate(45deg);
+}
+
+.nav__mobile-toggle--open span:nth-child(2) {
+  opacity: 0;
+  transform: translateX(-20px);
+}
+
+.nav__mobile-toggle--open span:nth-child(3) {
+  /* 例: translateYの値を少し小さくする (元の-7pxから調整) */
+  transform: translateY(-13px) rotate(-45deg);
+}
+
+/* モバイルメニュー */
+.nav__mobile-menu {
+  position: fixed;
+  top: 70px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(var(--color-dark-rgb, 26, 26, 26), 0.97);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  /* トグルボタンよりは奥、オーバーレイより手前 */
+  z-index: var(--z-index-modal-backdrop, 1040);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(100%);
+  transition: opacity var(--transition-normal) cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              visibility var(--transition-normal) cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              transform var(--transition-normal) cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  overflow-y: auto;
+  padding-top: 0px; /* ヘッダーの高さ分 */
+}
+
+.nav__mobile-menu--open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
+}
+
+.nav__mobile-content {
+  padding: var(--spacing-3xl, 3rem) var(--spacing-xl, 2rem);
+  max-width: 100%;
+  margin: 0 auto;
+  height: calc(100% - 70px); /* padding-top分を引く */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav__mobile-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  margin-bottom: var(--spacing-4xl, 4rem);
+  width: 100%;
+  max-width: 320px;
+  text-align: center;
+}
+
+.nav__mobile-item {
+  margin-bottom: var(--spacing-md, 1rem);
+  opacity: 0;
+  transform: translateY(15px);
+}
+
+.nav__mobile-link {
+  display: block;
+  font-size: var(--font-size-xl, 1.25rem);
+  font-weight: var(--font-weight-semibold, 600);
+  color: var(--color-white, #ffffff);
+  text-decoration: none;
+  padding: var(--spacing-lg, 1.5rem);
+  border-radius: var(--border-radius-lg, 0.5rem);
+  transition: background-color var(--transition-fast), color var(--transition-fast), transform var(--transition-fast);
+}
+
+.nav__mobile-link:hover,
+.nav__mobile-link:focus-visible {
+  background-color: rgba(var(--color-primary-rgb, 255, 140, 0), 0.2);
+  color: var(--color-primary-light, #ffa500);
+  transform: translateX(5px);
+}
+
+.nav__mobile-actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg, 1.5rem);
+  align-items: center;
+  width: 100%;
+  max-width: 320px;
+  opacity: 0;
+  transform: translateY(15px);
+}
+
+.nav__mobile-actions .btn {
+  width: 100%;
+  justify-content: center;
+}
+
+/* メニューオーバーレイ */
+.nav__mobile-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  /* メニューのすぐ後ろ */
+  z-index: calc(var(--z-index-modal-backdrop, 1040) - 1);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--transition-normal), visibility var(--transition-normal);
+}
+
+.nav__mobile-overlay--open {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* ローディングアニメーション (ロゴ) */
+.nav__logo-img.loading-animation {
+  opacity: 0; /* 初期状態はJSで制御されても良い */
+  animation: fadeInLogo 0.8s ease-out 0.3s forwards;
+}
+
+@keyframes fadeInLogo {
+  to {
+    opacity: 1;
+  }
+}
+
+/* モバイルメニューアイテムの表示アニメーション */
+@media (max-width: 1023px) {
+  .nav__mobile-menu--open .nav__mobile-item {
+    /* JS側でstyle.animationDelayを設定する想定、またはnth-childで遅延設定 */
+    animation: slideInUp 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  }
+  /* CSSで遅延を設定する場合の例 */
+  .nav__mobile-menu--open .nav__mobile-item:nth-child(1) { animation-delay: 0.1s; }
+  .nav__mobile-menu--open .nav__mobile-item:nth-child(2) { animation-delay: 0.15s; }
+  .nav__mobile-menu--open .nav__mobile-item:nth-child(3) { animation-delay: 0.2s; }
+  .nav__mobile-menu--open .nav__mobile-item:nth-child(4) { animation-delay: 0.25s; }
+
+  .nav__mobile-menu--open .nav__mobile-actions {
+    animation: slideInUp 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s forwards;
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 既存の prefers-reduced-motion は有効 */
+@media (prefers-reduced-motion: reduce) {
+  .nav__mobile-menu,
+  .nav__mobile-overlay,
+  .nav__mobile-toggle span,
+  .nav__link::before,
+  .nav__mobile-link::before { /* .nav__mobile-link::before は現状未使用 */
+    transition: none !important;
+  }
+  
+  .nav__mobile-item,
+  .nav__mobile-actions,
+  .nav__logo-img.loading-animation {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .header, .header--hidden {
+      transition: none !important;
+  }
+}

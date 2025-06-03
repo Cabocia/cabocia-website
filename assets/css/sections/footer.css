@@ -1,0 +1,150 @@
+/* ===== Footer Section ===== */
+
+.footer {
+  background: var(--gradient-dark, linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%)); /* variables.cssの定義を優先 */
+  color: var(--color-text-inverse, #f0f0f0); /* variables.cssの定義を優先 */
+  padding: var(--spacing-5xl) 0 var(--spacing-3xl); /* 上下のパディング */
+  position: relative;
+  font-size: var(--font-size-sm); /* フッター全体の基本フォントサイズ */
+}
+
+.footer a {
+  color: var(--color-gray-300, #cccccc); /* リンクの基本色 */
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.footer a:hover {
+  color: var(--color-primary-lighter, #ffa500); /* ホバー時の色 */
+  text-decoration: underline;
+}
+
+.footer__content {
+  display: grid;
+  grid-template-columns: 1fr; /* モバイルでは1列 */
+  gap: var(--spacing-4xl);
+  margin-bottom: var(--spacing-4xl);
+  padding-bottom: var(--spacing-3xl); /* bottomとの区切り */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@media (min-width: 768px) {
+  .footer__content {
+    grid-template-columns: 1fr 2fr; /* タブレット以上ではブランド情報とリンクを分ける */
+    gap: var(--spacing-5xl);
+  }
+}
+
+@media (min-width: 1024px) {
+  .footer__content {
+    grid-template-columns: 3fr 7fr; /* PCではブランド情報に少し幅を、リンク部分を広めに */
+  }
+}
+
+.footer__brand {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.footer__logo {
+  margin-bottom: var(--spacing-sm); /* ロゴと説明文の間 */
+}
+
+.footer__logo-img {
+  height: 36px; /* 少し小さめに調整 */
+  width: auto;
+  opacity: 0.9;
+  transition: opacity var(--transition-fast);
+}
+
+.footer__logo-img:hover {
+  opacity: 1;
+}
+
+.footer__description {
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-gray-400, #bdbdbd); /* 説明文の色を少し薄く */
+  max-width: 300px; /* 長すぎないように */
+}
+
+.footer__links {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* リンク列の自動調整 */
+  gap: var(--spacing-3xl);
+}
+
+@media (min-width: 768px) {
+  .footer__links {
+    gap: var(--spacing-4xl);
+  }
+}
+
+.footer__section {
+  /* 各リンクカテゴリーのスタイル */
+}
+
+.footer__section-title {
+  font-size: var(--font-size-base); /* カテゴリタイトルを少し大きく */
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-white, #ffffff);
+  margin-bottom: var(--spacing-lg);
+  position: relative;
+  padding-bottom: var(--spacing-sm);
+}
+
+.footer__section-title::after { /* タイトル下のアクセントライン */
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 30px;
+  height: 2px;
+  background: var(--color-primary, #ff8c00);
+}
+
+.footer__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm); /* リストアイテム間のスペース */
+}
+
+.footer__list li {
+  /* 個別のリストアイテムスタイルは特に不要な場合が多い */
+}
+
+.footer__link { /* .footer a と共通のスタイルを持つが、個別調整も可能 */
+  display: inline-block; /* ホバーエリアを広げる */
+  padding: var(--spacing-xs) 0; /* 上下にも少し余白 */
+}
+
+.footer__bottom {
+  padding-top: var(--spacing-3xl);
+  text-align: center;
+}
+
+.footer__copyright {
+  font-size: var(--font-size-xs); /* コピーライトを小さめに */
+  color: var(--color-gray-500, #9e9e9e);
+  line-height: var(--line-height-normal);
+}
+
+/* アニメーション用 (JSで制御) */
+.footer__brand,
+.footer__section,
+.footer__bottom {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.footer__brand.animate-in,
+.footer__section.animate-in,
+.footer__bottom.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
