@@ -359,10 +359,6 @@
     /* flex-direction: column; */
     gap: 0px;
   }
-  
-  .flow-arrow {
-    /* transform: rotate(90deg); */
-  }
 }
 
 /* Chat Demo */
