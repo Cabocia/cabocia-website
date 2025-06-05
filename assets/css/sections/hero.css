@@ -584,11 +584,22 @@
   color: var(--color-text-secondary);
   cursor: pointer;
   transition: all var(--transition-normal);
+    /* ▼▼▼ 背景画像の設定 ▼▼▼ */
+    background-image: url('../../images/demo-image.jpeg'); /* ★★★ ご自身の画像パスに置き換えてください ★★★ */
+    background-size: cover; /* 画像が要素全体を覆うように調整 */
+    background-position: center center; /* 画像を中央に配置 */
+    background-repeat: no-repeat;
+    border-radius: var(--border-radius-lg); /* 親要素の .hero__video-iframe と同じ角丸を継承または設定 */
 }
 
 .hero__video-placeholder:hover {
   background: linear-gradient(135deg, var(--color-primary-lighter), rgba(255, 140, 0, 0.1));
   color: var(--color-primary);
+  background-image: url('../../images/demo-image.jpeg'); /* ★★★ ご自身の画像パスに置き換えてください ★★★ */
+  background-size: cover; /* 画像が要素全体を覆うように調整 */
+  background-position: center center; /* 画像を中央に配置 */
+  background-repeat: no-repeat;
+  border-radius: var(--border-radius-lg); /* 親要素の .hero__video-iframe と同じ角丸を継承または設定 */
 }
 
 .hero__video-play-button {

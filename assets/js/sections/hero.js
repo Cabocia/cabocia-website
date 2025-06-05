@@ -11,7 +11,7 @@ class HeroController {
       this.scrollIndicator = document.querySelector('.hero__scroll-indicator');
       
       // YouTube関連
-      this.youtubeVideoId = 'ZmNONLFsdOE'; // TED Talk動画ID
+      this.youtubeVideoId = 'JGXQEsKRisM'; // TED Talk動画ID
       this.youtubePlayer = null;
       this.isVideoLoaded = false;
       

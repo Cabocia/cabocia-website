@@ -210,6 +210,7 @@
 .target-card__problems li,
 .target-card__solutions li {
   position: relative;
+  padding: var(--spacing-xs) var(--spacing-sm);
   padding-left: var(--spacing-xl);
   margin-bottom: var(--spacing-md);
   font-size: var(--font-size-base);
@@ -224,15 +225,18 @@
   top: 0;
   color: var(--color-error);
   font-size: var(--font-size-sm);
+  padding: var(--spacing-xs) var(--spacing-sm);
 }
 
 .target-card__solutions li::before {
-  content: '✅';
+  content: '⭕️';
   position: absolute;
   left: 0;
   top: 0;
   color: var(--color-success);
   font-size: var(--font-size-sm);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  padding-top: 10px;
 }
 
 .target-card__solutions li strong {

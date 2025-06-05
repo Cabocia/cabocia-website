@@ -48,6 +48,12 @@
   }
 }
 
+@media (max-width: 787px) {
+  .diff-features {
+    margin-top: 0px;
+  }
+}
+
 /* Differentiation Cards */
 .diff-card {
   display: grid;
@@ -92,6 +98,7 @@
 .diff-card.animate-in {
   opacity: 1;
   transform: translateY(0);
+  padding: 30px 20px;
 }
 
 /* Card Number */
@@ -563,11 +570,11 @@
 /* 連携サービス画像（diff-features内） */
 .diff-features .integration-showcase__image {
   grid-column: 1 / -1; /* 全幅に展開 */
-  margin-top: var(--spacing-4xl);
+  margin-top: var(--spacing-0xl);
   width: 100%;
   max-width: 900px;
   justify-self: center;
-  background: rgba(255, 255, 255, 0.95);
+  background: #e9e6dd;
   border-radius: var(--border-radius-2xl);
   padding: var(--spacing-2xl);
   box-shadow: 
