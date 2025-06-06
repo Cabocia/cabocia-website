@@ -60,6 +60,10 @@
 
 
 /* 役員紹介セクション */
+article {
+    margin-bottom: var(--spacing-2xl, 2.5rem);
+}
+
 .team-grid {
     display: grid;
     grid-template-columns: 1fr;
