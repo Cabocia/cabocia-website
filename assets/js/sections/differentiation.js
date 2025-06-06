@@ -26,7 +26,7 @@ class DifferentiationController {
   
   init() {
     this.saveInitialTransforms();
-    this.setupIntersectionObserver();
+    // this.setupIntersectionObserver();
     this.setupCardInteractions();
     this.setupChatDemo();
     this.setupTableAnimation();
@@ -49,38 +49,43 @@ class DifferentiationController {
   /**
    * Intersection Observerの設定
    */
+// setupIntersectionObserverメソッドを以下のように修正
   setupIntersectionObserver() {
     const observerOptions = {
-      threshold: 0.2,
-      rootMargin: '0px 0px -100px 0px'
+        threshold: 0.2,
+        rootMargin: '0px 0px -100px 0px'
     };
-    
+
+    // ▼▼▼ この部分をコメントアウトまたは削除 ▼▼▼
     // カードアニメーションの監視
+    /*
     const cardObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting && !this.hasAnimated.cards) {
-          this.animateCards();
-          this.hasAnimated.cards = true;
-        }
-      });
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !this.hasAnimated.cards) {
+            this.animateCards();
+            this.hasAnimated.cards = true;
+            }
+        });
     }, observerOptions);
-    
+
     if (this.section) {
-      cardObserver.observe(this.section);
+        cardObserver.observe(this.section);
     }
-    
-    // 比較表の監視
+    */
+    // ▲▲▲ ここまでをコメントアウトまたは削除 ▲▲▲
+
+    // 比較表の監視 (こちらは残す)
     const tableObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting && !this.hasAnimated.table) {
-          this.animateTable();
-          this.hasAnimated.table = true;
-        }
-      });
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !this.hasAnimated.table) {
+            this.animateTable();
+            this.hasAnimated.table = true;
+            }
+        });
     }, observerOptions);
-    
+
     if (this.comparisonTable) {
-      tableObserver.observe(this.comparisonTable);
+        tableObserver.observe(this.comparisonTable);
     }
   }
   

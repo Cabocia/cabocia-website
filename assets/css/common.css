@@ -1,0 +1,8 @@
+.sp-br {
+    display: none;
+}
+@media (max-width: 639px) {
+    .sp-br {
+        display: block;
+    }
+}

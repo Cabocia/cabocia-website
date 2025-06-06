@@ -1,0 +1,107 @@
+/* ===== Policy Page Specific Styles ===== */
+
+.policy-page .main {
+    padding-top: calc(var(--header-height, 70px) + var(--spacing-4xl, 4rem)); /* ヘッダーの高さ分を確保 */
+    padding-bottom: var(--spacing-5xl, 5rem);
+    background-color: var(--color-bg-secondary, #fafafa); /* 背景色を少しつける */
+}
+
+.policy-section {
+    padding: var(--spacing-4xl, 4rem) 0;
+    background-color: var(--color-bg-primary, #ffffff); /* コンテンツ部分は白背景 */
+    border-radius: var(--border-radius-2xl, 1rem);
+    box-shadow: var(--shadow-lg, 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05));
+}
+
+.policy-content {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: var(--font-size-base, 1rem);
+    line-height: var(--line-height-relaxed, 1.625);
+    color: var(--color-text-secondary, #757575);
+}
+
+.policy-subtitle {
+    font-size: var(--font-size-3xl, 1.875rem);
+    font-weight: var(--font-weight-semibold, 600);
+    margin: var(--spacing-4xl, 4rem) 0 var(--spacing-2xl, 2.5rem) 0;
+    padding-bottom: var(--spacing-md, 1rem);
+    border-bottom: 2px solid var(--color-primary-light, #ffa500);
+    color: var(--color-text-primary, #212121);
+}
+
+.policy-subtitle:first-of-type {
+    margin-top: 0;
+}
+
+.policy-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-xl, 2rem);
+}
+
+@media (min-width: 768px) {
+    .policy-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.policy-card {
+    background-color: var(--color-white, #ffffff);
+    padding: var(--spacing-xl, 2rem);
+    border-radius: var(--border-radius-lg, 0.5rem);
+    border: 1px solid var(--color-gray-200, #eeeeee);
+    box-shadow: var(--shadow-sm, 0 1px 2px 0 rgba(0, 0, 0, 0.05));
+    transition: transform var(--transition-fast, 150ms ease-in-out), box-shadow var(--transition-fast, 150ms ease-in-out);
+}
+
+.policy-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md, 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06));
+}
+
+.policy-card h3 {
+    font-size: var(--font-size-lg, 1.125rem);
+    font-weight: var(--font-weight-semibold, 600);
+    margin-bottom: var(--spacing-md, 1rem);
+    color: var(--color-primary, #ff8c00);
+    display: flex;
+    align-items: center;
+}
+
+.policy-card h3::before { /* 数字の前のアクセント */
+    content: '';
+    display: inline-block;
+    width: 4px;
+    height: 1.2em;
+    background-color: var(--color-primary-light, #ffa500);
+    margin-right: var(--spacing-sm, 0.5rem);
+    border-radius: 2px;
+}
+
+/* Mermaid.jsで描画される図のコンテナ */
+.mermaid-diagram-container {
+    background-color: #f9fafb; /* 図の背景色 */
+    padding: var(--spacing-xl, 2rem);
+    border-radius: var(--border-radius-lg, 0.5rem);
+    border: 1px solid var(--color-gray-200, #eeeeee);
+    text-align: center;
+    overflow-x: auto; /* スマホで図がはみ出た場合にスクロールできるように */
+    margin-top: var(--spacing-xl, 2rem);
+}
+
+/* Mermaid.jsが生成するSVGのスタイル調整 */
+.mermaid svg {
+    max-width: 100%; /* コンテナからはみ出ないように */
+    height: auto; /* アスペクト比を維持 */
+}
+
+/* ページ下部のアクションボタン */
+.policy-actions {
+    margin-top: var(--spacing-5xl, 5rem);
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap; /* スマホで折り返すように */
+    justify-content: center;
+    gap: var(--spacing-lg, 1.5rem);
+}

@@ -1,31 +1,34 @@
 /**
  * Contact Section Controller
- * フォームの基本的なインタラクションを管理
+ * フォームのインタラクションと送信後の処理を管理
  */
 class ContactFormController {
   constructor() {
     this.form = document.getElementById('cabocia-contact-form');
+    // form要素が見つからない場合は、何もしない
     if (!this.form) {
       console.warn('Contact form not found. Controller will not initialize.');
       return;
     }
 
+    // クラスのプロパティとしてフォーム関連の要素を保持
     this.otherToolCheckbox = document.getElementById('checkbox_other_tool_trigger');
     this.otherToolInput = this.form.querySelector('input[name="entry.1829487839.other_option_response"]');
     this.submitButton = document.getElementById('submitButton');
     this.responseMessageElement = document.getElementById('form-response-message');
+    this.iframe = document.getElementById('hidden_iframe');
+    this.submitted = false; // 送信状態を管理するフラグ
 
-    // グローバル変数 submitted を参照するため、windowオブジェクトにアクセス
-    // (HTMLのiframe onloadから直接呼び出すため、クラスメソッドではなくグローバル関数として定義)
-    window.handleFormSubmitResponse = this.handleFormSubmitResponse.bind(this);
-
-
-    this.init();
+    this.init(); // 初期化メソッドを呼び出し
   }
 
+  /**
+   * イベントリスナーなどを設定する初期化メソッド
+   */
   init() {
     this.setupOtherToolInteraction();
     this.setupFormSubmissionState();
+    this.setupIframeListener(); // iframeのloadイベントリスナーを設定するメソッドを呼び出し
   }
 
   /**
@@ -36,7 +39,7 @@ class ContactFormController {
       this.otherToolCheckbox.addEventListener('change', () => {
         this.otherToolInput.disabled = !this.otherToolCheckbox.checked;
         if (!this.otherToolCheckbox.checked) {
-          this.otherToolInput.value = ''; // チェックが外れたら入力内容をクリア
+          this.otherToolInput.value = '';
         } else {
           this.otherToolInput.focus();
         }
@@ -47,26 +50,35 @@ class ContactFormController {
   }
 
   /**
-   * フォーム送信時のボタン状態変更 (HTMLのonsubmitで基本的な処理はされているため、ここでは補足的)
+   * フォーム送信時のボタン状態変更とフラグ設定
    */
   setupFormSubmissionState() {
       if (this.form && this.submitButton) {
           this.form.addEventListener('submit', () => {
-              // onsubmit属性で既に実行されているが、念のため
               this.submitButton.disabled = true;
               this.submitButton.textContent = '送信中...';
-              window.submitted = true; // グローバル変数を設定
+              this.submitted = true; // クラスプロパティのフラグをtrueに
           });
       }
   }
 
+  /**
+   * iframeのloadイベントリスナーをJavaScriptで設定
+   */
+  setupIframeListener() {
+      if (this.iframe) {
+          // 'load'イベントが発生したら、handleFormSubmitResponseメソッドを実行
+          this.iframe.addEventListener('load', () => {
+              this.handleFormSubmitResponse();
+          });
+      }
+  }
 
   /**
-   * iframeのonloadイベントから呼び出される関数
    * フォーム送信後の処理（サンキューメッセージ表示、フォームリセットなど）
    */
   handleFormSubmitResponse() {
-    if (window.submitted) { // HTMLのonsubmitで設定されたグローバル変数を確認
+    if (this.submitted) { // 送信フラグがtrueの場合のみ実行
       if (this.responseMessageElement && this.form && this.submitButton) {
         this.responseMessageElement.textContent = 'お申込みありがとうございます。担当者よりご連絡いたします。';
         this.responseMessageElement.style.display = 'block';
@@ -74,27 +86,30 @@ class ContactFormController {
         this.responseMessageElement.style.color = 'var(--color-success-dark, #00704e)';
         this.responseMessageElement.style.border = '1px solid var(--color-success, #38a169)';
 
-        this.form.reset();
+        this.form.reset(); // フォームの内容をリセット
+        
+        // 送信ボタンの状態を元に戻す
         this.submitButton.disabled = false;
         this.submitButton.textContent = '上記内容で送信する';
-        
-        // 「その他」入力欄もリセット後の状態に合わせる
-        if (this.otherToolInput && this.otherToolCheckbox) {
-            this.otherToolInput.disabled = !this.otherToolCheckbox.checked; // チェックボックスの状態に依存
+
+        // 「その他」のテキスト入力欄の状態もリセット後の状態に合わせる
+        if (this.otherToolInput) {
+            this.otherToolInput.disabled = true;
         }
-
-
+        
+        // ユーザーにメッセージが見えるようにスクロール
         this.responseMessageElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
       }
-      window.submitted = false; // 次の送信のためにリセット
+      this.submitted = false; // 次の送信のためにフラグをリセット
     }
   }
 }
 
-// DOMContentLoaded後に関数を実行
+// DOMが完全に読み込まれた後に関数を実行
 document.addEventListener('DOMContentLoaded', () => {
+  // お問い合わせフォームが存在すれば、コントローラーを初期化
   if (document.getElementById('cabocia-contact-form')) {
     new ContactFormController();
-    console.log('ContactFormController initialized.');
+    console.log('ContactFormController initialized with JS-based iframe listener.');
   }
 });

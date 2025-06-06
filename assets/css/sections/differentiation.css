@@ -55,15 +55,15 @@
 }
 
 /* Differentiation Cards */
+/* 変更後 */
 .diff-card {
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--spacing-3xl);
   align-items: center;
   position: relative;
-  opacity: 0;
-  transform: translateY(50px);
-  transition: all 0.8s ease-out;
+  transition: all 0.8s ease-out; /* transitionはホバー効果などで使う可能性があるので残してOK */
+  padding: 20px;
 }
 @media (max-width: 639px) {
   .diff-card {
@@ -94,12 +94,12 @@
     order: 1;
   }
 }
-
+/* 
 .diff-card.animate-in {
   opacity: 1;
   transform: translateY(0);
   padding: 30px 20px;
-}
+} */
 
 /* Card Number */
 .diff-card__number {
