@@ -149,3 +149,102 @@
     transform: translateY(-2px);
     box-shadow: var(--shadow-md, 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06));
 }
+
+
+/* ▼▼▼ この部分を追記 ▼▼▼ */
+
+.legal-document {
+    text-align: left; /* 規約は左揃えが基本 */
+}
+
+.legal-document article {
+    margin-bottom: var(--spacing-2xl, 2.5rem);
+}
+
+.legal-heading {
+    font-size: var(--font-size-xl, 1.25rem);
+    font-weight: var(--font-weight-semibold, 600);
+    color: var(--color-text-primary, #212121);
+    margin-bottom: var(--spacing-md, 1rem);
+    padding-bottom: var(--spacing-sm, 0.5rem);
+    border-bottom: 1px solid var(--color-gray-200, #eeeeee);
+}
+
+.legal-document p,
+.legal-document li {
+    margin-bottom: var(--spacing-md, 1rem);
+}
+
+.legal-document ul {
+    list-style-type: disc; /* 黒丸の箇条書き */
+    padding-left: var(--spacing-xl, 2rem);
+}
+
+.legal-document ul li {
+    margin-bottom: var(--spacing-sm, 0.5rem);
+}
+
+.legal-footer {
+    margin-top: var(--spacing-4xl, 4rem);
+    padding-top: var(--spacing-xl, 2rem);
+    border-top: 1px solid var(--color-gray-300, #e0e0e0);
+    text-align: right; /* 右揃え */
+    font-size: var(--font-size-base, 1rem);
+    color: var(--color-text-primary, #212121);
+}
+
+
+/* ▼▼▼ この部分を追記 ▼▼▼ */
+
+.legal-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: var(--spacing-2xl, 2.5rem);
+    font-size: var(--font-size-base, 1rem);
+}
+
+.legal-table th,
+.legal-table td {
+    border: 1px solid var(--color-gray-200, #eeeeee);
+    padding: var(--spacing-lg, 1.5rem);
+    text-align: left;
+    vertical-align: top; /* 内容が複数行になる場合を考慮して上揃え */
+}
+
+.legal-table th {
+    background-color: var(--color-gray-50, #fafafa);
+    font-weight: var(--font-weight-semibold, 600);
+    width: 30%; /* 見出し列の幅を固定 */
+    min-width: 180px; /* 最小幅 */
+    white-space: nowrap; /* 見出しが改行されないように */
+}
+
+.legal-table td ul {
+    list-style-type: disc;
+    padding-left: var(--spacing-lg, 1.5rem);
+    margin-top: var(--spacing-sm, 0.5rem);
+}
+.legal-table td ul:first-child {
+    margin-top: 0;
+}
+
+
+@media (max-width: 768px) {
+    .legal-table th,
+    .legal-table td {
+        display: block; /* モバイルでは縦積みに */
+        width: 100%;
+        border-right: 1px solid var(--color-gray-200, #eeeeee); /* 左右のボーダーを維持 */
+    }
+    .legal-table th {
+        border-bottom: none; /* 見出しと内容の間のボーダーを消す */
+        white-space: normal; /* モバイルでは見出しも改行を許可 */
+    }
+    .legal-table td {
+        border-top: none; /* 見出しと内容の間のボーダーを消す */
+    }
+    .legal-table tr {
+        margin-bottom: var(--spacing-lg, 1.5rem);
+        display: block; /* 各行をブロックとして扱う */
+    }
+}
