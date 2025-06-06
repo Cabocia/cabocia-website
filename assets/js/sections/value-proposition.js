@@ -88,28 +88,54 @@ class ValuePropositionController {
   /**
    * タイトルアニメーション
    */
+  // animateTitleメソッドを以下の内容に置き換え
   animateTitle() {
     if (!this.sectionTitle) return;
+
+    console.log('Animating value proposition title with <br> support');
+
+    // 1. h2要素の元々のHTMLを取得
+    const originalHTML = this.sectionTitle.innerHTML;
+    // 2. 元のHTMLを空にする
+    this.sectionTitle.innerHTML = '';
     
-    console.log('Animating value proposition title');
-    
-    // タイトルを文字ごとに分割してアニメーション
-    const titleText = this.sectionTitle.textContent;
-    const titleWords = titleText.split('');
-    
-    // テキストをspanで包む
-    this.sectionTitle.innerHTML = titleWords.map(char => 
-      char === ' ' ? ' ' : `<span class="title-char" style="opacity: 0; transform: translateY(20px); display: inline-block;">${char}</span>`
-    ).join('');
-    
-    // 文字を順次表示
-    const chars = this.sectionTitle.querySelectorAll('.title-char');
-    chars.forEach((char, index) => {
+    // 3. テキストノードと<br>タグに分割
+    //    元のHTMLを<br>タグで分割し、配列にする
+    const parts = originalHTML.split(/<br\s*\/?>/i);
+
+    parts.forEach((part, index) => {
+      // 4. テキスト部分を1文字ずつspanで囲む
+      const chars = part.split('');
+      chars.forEach(char => {
+        const span = document.createElement('span');
+        if (char === ' ') {
+          // スペースの場合は、そのままスペースのテキストノードを追加
+          this.sectionTitle.appendChild(document.createTextNode(' '));
+        } else {
+          // 文字の場合はspanで囲む
+          span.className = 'title-char';
+          span.textContent = char;
+          span.style.opacity = '0';
+          span.style.transform = 'translateY(20px)';
+          span.style.display = 'inline-block'; // アニメーションのために必要
+          this.sectionTitle.appendChild(span);
+        }
+      });
+
+      // 5. 最後の部分以外には、分割に使った<br>タグを再度追加する
+      if (index < parts.length - 1) {
+        this.sectionTitle.appendChild(document.createElement('br'));
+      }
+    });
+
+    // 6. 文字を順次アニメーション表示
+    const spanChars = this.sectionTitle.querySelectorAll('.title-char');
+    spanChars.forEach((char, index) => {
       setTimeout(() => {
-        char.style.transition = 'all 0.5s ease-out';
+        char.style.transition = 'opacity 0.5s ease-out, transform 0.5s ease-out';
         char.style.opacity = '1';
         char.style.transform = 'translateY(0)';
-      }, index * 50);
+      }, index * 50); // 1文字あたり50msの遅延
     });
   }
   
