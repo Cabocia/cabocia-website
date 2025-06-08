@@ -51,7 +51,7 @@
       "contactPoint": {
         "@type": "ContactPoint",
         "contactType": "customer support",
-        "email": "info@cabocia.inc"
+        "email": "info@cabocia.jp"
       },
       "description": "企業の散在するデータを一元化し、自然言語で問いかけるだけで即座に分析・提案する法人向けAIデータ分析プラットフォーム「ホウジンAI」を開発・提供しています。"
     }
@@ -66,6 +66,7 @@
     <!-- セクション別CSS -->
     <link rel="stylesheet" href="assets/css/sections/header.css">
     <link rel="stylesheet" href="assets/css/sections/hero.css">
+    <link rel="stylesheet" href="assets/css/sections/hero2.css">
     <link rel="stylesheet" href="assets/css/sections/product.css">
     <link rel="stylesheet" href="assets/css/sections/differentiation.css">
     <link rel="stylesheet" href="assets/css/sections/value-proposition.css">
@@ -117,7 +118,43 @@
     </header>
 
     <main class="main">
-        <section class="hero" id="hero">
+
+        <section class="hero hero2" id="hero2">
+            <div class="hero__container">
+                <div class="hero__content">
+                    <h1 class="hero__title">
+                        法人の意思決定は<span class="hero__title-highlight">ホウジンAIと</span>
+                    </h1>
+                    
+                    <p class="hero__subtitle">
+                        「この売上、何が原因だろう？」<br class="sp-br">と聞いたら、<br>
+                        社内の"文脈"を理解している<br class="sp-br">AIが教えてくれる。<br>
+                        <strong>そんな世界がもう来ています。</strong>
+                    </p>
+
+                            
+                    <div class="hero2__video-container">
+                        <video src="assets/images/movies/auto-image-movie1.mp4" class="hero2__video" autoplay loop muted playsinline></video>
+                    </div>
+                    
+                    <p class="hero__campaign">
+                        🎉 テスター募集中！今なら無料でお試しできて、有償後も永久割引！
+                    </p>
+                    
+                    <div class="hero__actions">
+                        <a href="#tester" class="btn btn--primary btn--large">テスター申し込み</a>
+                        <a href="#contact" class="btn btn--secondary btn--large">お問い合わせ</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hero__scroll-indicator">
+                <div class="hero__scroll-text">スクロールして詳細を見る</div>
+                <div class="hero__scroll-arrow"></div>
+            </div>
+        </section>
+
+        <!-- <section class="hero" id="hero">
             <div class="hero__container">
                 <div class="hero__content">
                     <h1 class="hero__title">
@@ -153,7 +190,7 @@
                 <div class="hero__scroll-text">スクロールして詳細を見る</div>
                 <div class="hero__scroll-arrow"></div>
             </div>
-        </section>
+        </section> -->
 
         <section class="product" id="product">
             <div class="container">
@@ -785,6 +822,7 @@
                 <div class="contact__content">
                     <form class="contact-form" id="cabocia-contact-form"
                           action="https://docs.google.com/forms/d/e/1FAIpQLScYP06MG-7SA9krTkJPBgvH5HGNmzQbI9zcRukWHciiWcfl1w/formResponse"
+                          data-thanks-page="thanks-top.html"
                           method="POST" target="hidden_iframe" onsubmit="submitted=true; document.getElementById('submitButton').disabled=true; document.getElementById('submitButton').textContent='送信中...';">
         
                         <div class="form-group">
@@ -883,7 +921,7 @@
                             <label class="form-label">テスター利用に関する同意事項 <span class="required">*</span></label>
                             <div class="form-text-description">
                                 <p>現在開発中のプロダクトになります。ご要望に全てお応えできない可能性がある旨、あらかじめご了承ください。</p>
-                                <p>また、当サービスは、場合によってはお客様のデータを取り扱うツールとなります。そのため、テスター環境であっても「契約書」と「NDA（秘密保持契約）」をご用意しており、締結を推奨しております。ただし、<strong>GA4のデータのみをご利用の場合</strong>で、顧客情報を一切扱わないケースに限り、<strong>契約書の取り交わしは不要</strong>とし、<a href="https://docs.google.com/document/d/1PPXk_jhDNajCkpLV3z-u1I2B3JScNO1D1nwQZHhKarQ/edit?tab=t.0" target="_blank" rel="noopener noreferrer">利用規約</a>への同意のみで進めることも可能です。</p>
+                                <p>また、当サービスは、場合によってはお客様のデータを取り扱うツールとなります。そのため、テスター環境であっても「契約書」と「NDA（秘密保持契約）」をご用意しており、締結を推奨しております。ただし、<strong>GA4のデータのみをご利用の場合</strong>で、顧客情報を一切扱わないケースに限り、<strong>契約書の取り交わしは不要</strong>とし、<a href="terms-of-service.html" target="_blank" rel="noopener noreferrer">利用規約</a>への同意のみで進めることも可能です。</p>
                             </div>
                             <div class="form-radio-group">
                                 <label class="form-radio">
@@ -933,11 +971,11 @@
                                 法人の意思決定に、AIの力を。
                             </p>
                             <p class="contact-info__item">
-                                Email: <a href="mailto:info@cabocia.inc">info@cabocia.inc</a>
+                                Email: <a href="mailto:info@cabocia.jp">info@cabocia.jp</a>
                             </p>
-                            <p class="contact-info__item">
+                            <!-- <p class="contact-info__item">
                                 （お問い合わせフォームからもご連絡いただけます）
-                            </p>
+                            </p> -->
                         </div>
                     </div>
                 </div>
@@ -999,6 +1037,7 @@
     <script src="assets/js/main.js"></script>
     <!-- セクション別スクリプト -->
     <script src="assets/js/sections/hero.js"></script>
+    <script src="assets/js/sections/hero2.js"></script>
     <script src="assets/js/sections/product.js"></script>
     <script src="assets/js/sections/differentiation.js"></script>
     <script src="assets/js/sections/value-proposition.js"></script>

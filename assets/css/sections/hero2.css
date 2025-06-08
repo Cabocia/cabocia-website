@@ -1,0 +1,59 @@
+/* ===== Hero 2 Section (assets/css/sections/hero2.css) ===== */
+
+/* 既存の .hero スタイルをベースに、hero2固有のスタイルを適用 */
+.hero.hero2 {
+  /* hero2セクション全体に特有のスタイルがあればここに記述 */
+}
+
+/* h1 > p の後に配置された新しいビデオコンテナ */
+.hero2__video-container {
+  max-width: 800px;
+  /* 上下に適切なマージンを設定 */
+  margin: var(--spacing-4xl) auto var(--spacing-3xl);
+  border-radius: var(--border-radius-2xl);
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12), 0 8px 16px rgba(0, 0, 0, 0.08);
+  border: 1px solid var(--color-gray-200);
+  position: relative;
+  
+  /* 表示アニメーション（hero.cssのfadeInUpを流用/タイミングを調整） */
+  opacity: 0;
+  transform: translateY(30px);
+  /* アニメーションの遅延を調整 */
+  animation: fadeInUp 1s ease-out 0.6s forwards;
+  will-change: transform, opacity;
+}
+
+/* video要素自体のスタイル */
+.hero2__video {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* hero.cssのアニメーション遅延をhero2用に上書き調整 */
+.hero.hero2 .hero__subtitle {
+  animation-delay: 0.4s; /* subtitleは早めに表示 */
+}
+
+.hero.hero2 .hero__campaign {
+  animation-delay: 0.8s; /* campaignは動画の後に表示 */
+}
+
+.hero.hero2 .hero__actions {
+  animation-delay: 1.0s; /* actionsは最後に表示 */
+}
+
+
+/* hero.cssにfadeInUpの定義があるため、ここでは不要 */
+/* @keyframes fadeInUp { ... } */
+
+
+/* reduced-motionへの配慮 */
+@media (prefers-reduced-motion: reduce) {
+  .hero2__video-container {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}

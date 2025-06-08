@@ -47,6 +47,11 @@
   position: relative;
   overflow: hidden;
 }
+@media (max-width: 1023px) {
+  .contact-form {
+    padding: 1.5em;
+  }
+}
 
 .contact-form::before { /* カード上部のアクセントライン */
   content: '';
@@ -340,7 +345,7 @@
 /* 個人情報同意のチェックボックス（既存の .form-checkbox を利用） */
 .form-checkbox { /* 元のプライバシーポリシー同意用 */
   display: flex;
-  align-items: flex-start; /* テキストが複数行になる場合を考慮 */
+  align-items: normal; /* テキストが複数行になる場合を考慮 */
   gap: var(--spacing-md);
   cursor: pointer;
   padding: var(--spacing-sm) 0;

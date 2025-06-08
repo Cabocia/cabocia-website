@@ -77,30 +77,29 @@ class ContactFormController {
   /**
    * フォーム送信後の処理（サンキューメッセージ表示、フォームリセットなど）
    */
+  /**
+     * フォーム送信後の処理（ページリダイレクト）
+     */
   handleFormSubmitResponse() {
-    if (this.submitted) { // 送信フラグがtrueの場合のみ実行
-      if (this.responseMessageElement && this.form && this.submitButton) {
-        this.responseMessageElement.textContent = 'お申込みありがとうございます。担当者よりご連絡いたします。';
-        this.responseMessageElement.style.display = 'block';
-        this.responseMessageElement.style.backgroundColor = 'var(--color-success-lighter, #e6fffa)';
-        this.responseMessageElement.style.color = 'var(--color-success-dark, #00704e)';
-        this.responseMessageElement.style.border = '1px solid var(--color-success, #38a169)';
+    if (this.submitted) {
+      // ステップ1でHTMLに設定した data-thanks-page 属性の値を取得
+      const thanksPageUrl = this.form.dataset.thanksPage;
 
-        this.form.reset(); // フォームの内容をリセット
-        
-        // 送信ボタンの状態を元に戻す
-        this.submitButton.disabled = false;
-        this.submitButton.textContent = '上記内容で送信する';
-
-        // 「その他」のテキスト入力欄の状態もリセット後の状態に合わせる
-        if (this.otherToolInput) {
-            this.otherToolInput.disabled = true;
+      // 属性が設定されていれば、そのページにリダイレクト（遷移）させる
+      if (thanksPageUrl) {
+        window.location.href = thanksPageUrl;
+      } else {
+        // もし属性が設定されていなかった場合の予備の処理（コンソールに警告を出す）
+        console.warn('data-thanks-page 属性がフォームに設定されていません。リダイレクトできませんでした。');
+        // 従来通りメッセージを表示
+        if (this.responseMessageElement) {
+          this.responseMessageElement.textContent = 'お申込みありがとうございます。';
+          this.responseMessageElement.style.display = 'block';
         }
-        
-        // ユーザーにメッセージが見えるようにスクロール
-        this.responseMessageElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
       }
-      this.submitted = false; // 次の送信のためにフラグをリセット
+
+      // フラグをリセット
+      this.submitted = false;
     }
   }
 }

@@ -308,16 +308,16 @@ class ProductController {
   /**
    * 他のカードを薄暗くする
    */
-  dimOtherCards(activeCard) {
-    const allCards = [...this.challengeCards, ...this.solutionCards, ...this.comparisonCards];
+  // dimOtherCards(activeCard) {
+  //   const allCards = [...this.challengeCards, ...this.solutionCards, ...this.comparisonCards];
     
-    allCards.forEach(card => {
-      if (card !== activeCard) {
-        card.style.opacity = '0.7';
-        card.style.transform = 'scale(0.98)';
-      }
-    });
-  }
+  //   allCards.forEach(card => {
+  //     if (card !== activeCard) {
+  //       card.style.opacity = '0.7';
+  //       card.style.transform = 'scale(0.98)';
+  //     }
+  //   });
+  // }
   
   /**
    * カードの状態を復元

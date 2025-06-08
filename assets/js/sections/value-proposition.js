@@ -286,7 +286,7 @@ class ValuePropositionController {
       }
       
       // 他のカードを薄暗くする
-      this.dimOtherCards(card);
+      // this.dimOtherCards(card);
     } else {
       // 通常状態に戻す
       if (icon) {

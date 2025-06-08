@@ -176,8 +176,8 @@ class DifferentiationController {
       // ビジュアル要素の強調
       this.enhanceVisual(visual, index);
       
-      // 他のカードを薄暗くする
-      this.dimOtherCards(card);
+      // // 他のカードを薄暗くする
+      // this.dimOtherCards(card);
     } else {
       // 通常状態に戻す
       card.style.transform = '';
