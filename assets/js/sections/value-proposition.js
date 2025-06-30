@@ -368,7 +368,7 @@ class ValuePropositionController {
     
     // スクリーンリーダー用の説明を追加
     if (this.section) {
-      this.section.setAttribute('aria-label', 'ホウジンAIの価値提案');
+      this.section.setAttribute('aria-label', '参謀AIの価値提案');
     }
   }
   
